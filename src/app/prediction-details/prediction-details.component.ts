@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PredictionService } from '../services/prediction.service';
 import { Prediction } from '../models/prediction';
 import { ToastrService } from 'ngx-toastr';
+import * as jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-prediction-details',
@@ -11,11 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PredictionDetailsComponent implements OnInit {
 
-  predictionData: any[];
-
+  // options for chart
   view: any[] = [700, 400];
-
-  // options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
@@ -28,28 +27,29 @@ export class PredictionDetailsComponent implements OnInit {
   id: string;
   prediction: Prediction = new Prediction();
   isReadOnly = true;
+  predictionData: any[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private predictionService: PredictionService,
     private toastr: ToastrService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
 
     this.id = this.route.snapshot.paramMap.get('id');
 
-    if(this.id){
+    if (this.id) {
       this.predictionService.get(this.id).subscribe((data: Prediction) => {
         this.prediction = data;
 
         this.predictionData = this.prediction.predictionItems.map(p => (
-          {"name" :p.consumptionDate, "value":p.consumption}
-          ));
+          { "name": p.consumptionDate, "value": p.consumption }
+        ));
       });
     }
-    else{
+    else {
       this.isReadOnly = false;
     }
 
@@ -64,15 +64,39 @@ export class PredictionDetailsComponent implements OnInit {
       "frequency": this.prediction.frequency
     }
 
-    console.log(pred);
+    // console.log(pred);
 
     this.predictionService.predict(pred).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.prediction = data;
-      this.router.navigateByUrl("/prediction/"+ this.prediction.id);
+      this.router.navigateByUrl("/prediction/" + this.prediction.id);
     });
 
     this.toastr.success("Prediction Submitted", "Success");
   }
 
+  printReport(){  
+
+    let title = "Prediction #" + this.prediction.id.toString() + " on " + this.prediction.createdDate.toString();
+    var data = document.getElementById('predictionDetails');  
+    html2canvas(data).then(canvas => {  
+      
+      var doc = new jsPDF({
+        orientation: 'landscape',
+        unit: 'in',
+        format: 'a4'
+      });
+      
+      doc.text(title, 1, 1);
+
+      const contentDataURL = canvas.toDataURL('image/png');
+      doc.addImage(contentDataURL, 'PNG', 1, 2, 10, 4, 'prediction_graph');
+      doc.save(title + '.pdf'); // Generated PDF   
+    });
+
+  }
+
+
+
+  
 }

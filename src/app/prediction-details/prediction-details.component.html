@@ -1,11 +1,10 @@
 <h3>Prediction Details </h3>
 
-<form #predictionForm="ngForm" (ngSubmit)="onSubmit()" class="mt-4 mb-4">
+<form #predictionForm="ngForm" (ngSubmit)="onSubmit()">
 
+  <div #predictionDetails id="predictionDetails" class="row">
+    <div class="col-sm-6">
 
-  <div class="row">
-    <div class="col-sm-7">
-      
       <div class="form-row">
 
         <div class="form-group col-sm-5">
@@ -13,24 +12,25 @@
           <input #id="ngModel" [(ngModel)]="prediction.id" name="id" id="id" type="text" class="form-control"
             [readonly]="true">
         </div>
-    
+
         <div class="form-group col-sm-5">
           <label for="createdDate">Created Date</label>
           <input #createdDate="ngModel" [(ngModel)]="prediction.createdDate" name="createdDate" id="createdDate"
             class="form-control" [readonly]="true">
         </div>
-    
+
       </div>
-    
+
       <div class="form-row">
-    
+
         <div class="form-group col-sm-5">
           <label for="duration">Duration</label>
           <input #duration="ngModel" [(ngModel)]="prediction.duration" name="duration" id="duration" type="text"
             class="form-control" required [readonly]="isReadOnly">
-          <div class="invalid-feedback d-block" *ngIf="duration.touched && duration.invalid"> Duration is Required </div>
+          <div class="invalid-feedback d-block" *ngIf="duration.touched && duration.invalid"> Duration is Required
+          </div>
         </div>
-    
+
         <div class="form-group col-sm-5">
           <label for="frequency">Frequency</label>
           <select #frequency="ngModel" [(ngModel)]="prediction.frequency" name="frequency" id="frequency"
@@ -39,11 +39,12 @@
             <option value="M">Months</option>
             <option value="Y">Years</option>
           </select>
-          <div class="invalid-feedback d-block" *ngIf="frequency.touched && frequency.invalid"> Frequency is Required </div>
+          <div class="invalid-feedback d-block" *ngIf="frequency.touched && frequency.invalid"> Frequency is Required
+          </div>
         </div>
-    
+
       </div>
-    
+
 
     </div>
 
@@ -58,6 +59,7 @@
   <div>
     <a routerLink="/prediction" class="btn btn-secondary"> <i class="fa fa-arrow-left"></i>Prediction List </a>
     <button type="submit" class="btn btn-success" *ngIf="!isReadOnly" [disabled]="!predictionForm.valid">Submit</button>
+    <button type="button" class="btn btn-warning" *ngIf="isReadOnly" [disabled]="!prediction.id" (click)="printReport()">Print Report</button>
   </div>
 
 </form>
