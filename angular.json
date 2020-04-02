@@ -65,12 +65,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "e-manager:build",
-            "proxyConfig": "src/proxy-conf.json"
+            "proxyConfig": "proxy-conf.json"
           },
           "configurations": {
             "production": {
               "browserTarget": "e-manager:build:production",
-              "proxyConfig": "src/proxy-conf.json"
+              "proxyConfig": "proxy-conf.json"
             }
           }
         },
