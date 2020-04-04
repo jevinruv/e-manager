@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,15 +10,15 @@ export class NavbarComponent implements OnInit {
 
   isNavbarCollapsed;
   username: string;
-  authority: string;
+  type: string;
 
   constructor(
-    // private tokenService: TokenStorageService,
+    private tokenService: TokenService,
   ) { }
 
   ngOnInit() {
-    // this.username = this.tokenService.getUsername();
-    // this.authority = this.tokenService.getAuthority();
+    this.username = this.tokenService.getUsername();
+    this.type = this.tokenService.getType();
   }
 
   toggleNavbar() {
@@ -25,7 +26,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    // this.tokenService.signout();
+    this.tokenService.signout();
     window.location.reload();
   }
 

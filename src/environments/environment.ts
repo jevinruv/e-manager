@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseURL:"https://eirls-mm-api.herokuapp.com/api"
+  baseURL:"https://e-manager-api.herokuapp.com/api"
 };
 
 /*

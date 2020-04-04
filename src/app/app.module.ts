@@ -12,13 +12,19 @@ import { PredictionListComponent } from './prediction-list/prediction-list.compo
 import { PredictionDetailsComponent } from './prediction-details/prediction-details.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './ui/navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { LoginLayoutComponent } from './ui/layouts/login-layout/login-layout.component';
+import { DefaultLayoutComponent } from './ui/layouts/default-layout/default-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PredictionListComponent,
     PredictionDetailsComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    LoginLayoutComponent,
+    DefaultLayoutComponent
   ],
   imports: [
     BrowserModule,
