@@ -26,4 +26,5 @@ export class UserService {
   login(user) {
     return this.http.post<User>(this.API_URL + "/login", user);
   }
+
 }

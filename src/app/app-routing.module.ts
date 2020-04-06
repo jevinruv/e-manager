@@ -6,6 +6,11 @@ import { LoginComponent } from './login/login.component';
 import { DefaultLayoutComponent } from './ui/layouts/default-layout/default-layout.component';
 import { LoginLayoutComponent } from './ui/layouts/login-layout/login-layout.component';
 import { AuthGuard } from './guards/auth.guard';
+import { UserListComponent } from './user-list/user-list.component';
+import { AdminGuard } from './guards/admin.guard';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { RegisterComponent } from './register/register.component';
+import { EconsumptionListComponent } from './econsumption-list/econsumption-list.component';
 
 
 const routes: Routes = [
@@ -18,6 +23,12 @@ const routes: Routes = [
       { path: 'prediction/new', component: PredictionDetailsComponent },
       { path: 'prediction/:id', component: PredictionDetailsComponent },
       { path: 'prediction', component: PredictionListComponent },    
+
+      { path: 'econsumption', component: EconsumptionListComponent }, 
+
+      { path: 'user/new', component: UserDetailsComponent },    
+      { path: 'user/:id', component: UserDetailsComponent },    
+      { path: 'user', component: UserListComponent, canActivate: [AdminGuard] },    
     ]
   },
 
@@ -26,7 +37,7 @@ const routes: Routes = [
     component: LoginLayoutComponent,
     children: [
       { path: 'login', component: LoginComponent },
-      // { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent }
     ]
   },
   

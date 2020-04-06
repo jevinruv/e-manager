@@ -1,0 +1,63 @@
+<h3>User Details</h3>
+
+<form #userForm="ngForm" (ngSubmit)="onSubmit()" class="mt-4">
+
+  <div class="form-row">
+
+    <div class="form-group col-md-3">
+      <label for="id">ID</label>
+      <input #id="ngModel" [(ngModel)]="user.id" name="id" id="id" type="text" class="form-control"
+        [readonly]="true">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="type">Type</label>
+      <select #type="ngModel" [(ngModel)]="user.type" name="type" id="type" class="form-control" required [disabled]="isReadOnly">
+      <option value="ADMIN">ADMIN</option>
+      <option value="NORMAL">NORMAL</option>
+    </select>
+    <div class="invalid-feedback d-block" *ngIf="type.touched && type.invalid"> Type is Required </div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input #name="ngModel" [(ngModel)]="user.name" name="name" id="name" type="text" class="form-control col-md-9"
+      required [readonly]="isReadOnly">
+    <div class="invalid-feedback d-block" *ngIf="name.touched && name.invalid"> Name is Required </div>
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-5">
+      <label for="price">Username</label>
+      <input #username="ngModel" [(ngModel)]="user.username" name="username" id="username" type="text"
+        class="form-control" required [readonly]="isReadOnly">
+        <div class="invalid-feedback d-block" *ngIf="username.touched && username.invalid"> Username is Required </div>
+      </div>
+
+    <div class="form-group col-md-4">
+      <label for="password">Password</label>
+      <input #password="ngModel" [(ngModel)]="user.password" name="password" id="password" type="password"
+        class="form-control" required [readonly]="isReadOnly">
+      <div class="invalid-feedback d-block" *ngIf="password.touched && password.invalid"> Password is Required </div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input #email="ngModel" [(ngModel)]="user.email" name="email" id="email"
+      class="form-control col-md-9" required [readonly]="isReadOnly" rows="3">
+    <div class="invalid-feedback d-block" *ngIf="email.touched && email.invalid"> Email is Required
+    </div>
+  </div>
+
+  <div>
+    <a routerLink="/user" class="btn btn-secondary"> User List</a>
+    <button class="btn btn-success" [disabled]="!userForm.valid || isReadOnly">Save</button>
+    <button *ngIf="user.id" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
+  </div>
+
+</form>

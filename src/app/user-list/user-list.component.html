@@ -1,0 +1,32 @@
+<h3>User List</h3>
+
+<p class="float-right">
+  <a routerLink="/user/new" class="btn btn-primary"> New User </a>
+</p>
+
+<p>
+  <input #query (keyup)="filter(query.value)" type="text" placeholder="Search..." class="form-control">
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of filteredUserList" [routerLink]="[user.id]">
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.type}}</td>
+      <td>
+        <a [routerLink]="[user.id]">Manage</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

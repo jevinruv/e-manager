@@ -30,4 +30,8 @@ export class NavbarComponent implements OnInit {
     window.location.reload();
   }
 
+  isAdmin(){
+    return this.type === ("ADMIN");
+  }
+
 }

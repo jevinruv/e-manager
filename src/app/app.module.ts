@@ -15,6 +15,10 @@ import { NavbarComponent } from './ui/navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { LoginLayoutComponent } from './ui/layouts/login-layout/login-layout.component';
 import { DefaultLayoutComponent } from './ui/layouts/default-layout/default-layout.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { RegisterComponent } from './register/register.component';
+import { EconsumptionListComponent } from './econsumption-list/econsumption-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { DefaultLayoutComponent } from './ui/layouts/default-layout/default-layo
     NavbarComponent,
     LoginComponent,
     LoginLayoutComponent,
-    DefaultLayoutComponent
+    DefaultLayoutComponent,
+    UserListComponent,
+    UserDetailsComponent,
+    RegisterComponent,
+    EconsumptionListComponent
   ],
   imports: [
     BrowserModule,

@@ -18,8 +18,12 @@ export class LoginComponent implements OnInit {
     private router: Router,
     ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() {
+      let token = this.tokenService.getUsername();
+      if (token) {
+        this.router.navigateByUrl('');
+      }
+    }
 
   onSubmit(loginForm) {
 
@@ -48,6 +52,7 @@ export class LoginComponent implements OnInit {
 
       this.tokenService.saveUsername(data.username);
       this.tokenService.saveType(data.type);
+      this.tokenService.saveUserID(data.id);
 
       // switch (this.tokenService.getType()) {
       //   case 'ADMIN':
@@ -60,7 +65,7 @@ export class LoginComponent implements OnInit {
       //     break;
       // }
 
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/');
     }
     else {
       this.toastr.error("Invalid Credentials!");

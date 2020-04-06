@@ -12,8 +12,8 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/prediction/" routerLinkActive="active">Predictions</a>
         </li>
-        <li class="nav-item">
-          <!-- <a class="nav-link" routerLink="/item-complete/" routerLinkActive="active">Item Complete</a> -->
+        <li class="nav-item" *ngIf="isAdmin()">
+          <a class="nav-link" routerLink="/user/" routerLinkActive="active">Users</a>
         </li>
         <li class="nav-item">
           <!-- <a class="nav-link" routerLink="/supplier/" routerLinkActive="active">Supplier</a> -->

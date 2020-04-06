@@ -7,8 +7,18 @@ export class TokenService {
 
   USERNAME_KEY = 'AuthUsername';
   TYPE_KEY = 'AuthType';
+  UserID_KEY = 'AuthUserID';
 
   constructor() { }
+
+  public saveUserID(userID: string) {
+    window.sessionStorage.removeItem(this.UserID_KEY);
+    window.sessionStorage.setItem(this.UserID_KEY, userID);
+  }
+
+  public getUserID(): string {
+    return sessionStorage.getItem(this.UserID_KEY);
+  }
 
   public saveUsername(username: string) {
     window.sessionStorage.removeItem(this.USERNAME_KEY);
@@ -28,7 +38,11 @@ export class TokenService {
     return sessionStorage.getItem(this.TYPE_KEY);
   }
 
-  signout() {
+  public isAdmin(){
+    return this.getType() == ("ADMIN");
+  }
+
+  public signout() {
     window.sessionStorage.clear();
   }
 

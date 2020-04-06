@@ -1,0 +1,37 @@
+<h3>Electricity Consumption {{ selectedCategory }} </h3>
+
+<div class="mt-4 mb-3">
+
+  <!-- <a routerLink="/supplier-order/" class="btn btn-warning"> All </a> -->
+  <a routerLink="/econsumption/" [queryParams]="{ category: 'daily' }" class="btn btn-success"> Daily </a>
+  <a routerLink="/econsumption/" [queryParams]="{ category: 'weekly' }" class="btn btn-success"> Weekly </a>
+  <a routerLink="/econsumption/" [queryParams]="{ category: 'monthly' }" class="btn btn-success"> Monthly </a>
+  <a routerLink="/econsumption/" [queryParams]="{ category: 'quarterly' }" class="btn btn-success"> Quarterly </a>
+  <a routerLink="/econsumption/new" class="btn btn-primary float-right"> New Daily Consumption </a>
+</div>
+
+<p>
+  <!-- <input #query (keyup)="filter(query.value)" type="text" placeholder="Search..." class="form-control"> -->
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Status</th>
+      <th>Consumption</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let eConsumption of filteredEConsumptionList | keyvalue" [routerLink]="[eConsumption.key]">
+      <td>{{eConsumption.key}}</td> 
+      <td>{{eConsumption.value}}</td>
+       <!--<td>{{econsumption.createdDate}}</td>
+      <td>{{econsumption.supplier.name}}</td> -->
+      <td>
+        <a [routerLink]="[eConsumption.key]">Manage</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
