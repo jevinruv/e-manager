@@ -19,6 +19,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { RegisterComponent } from './register/register.component';
 import { EconsumptionListComponent } from './econsumption-list/econsumption-list.component';
+import { FaqListComponent } from './faq-list/faq-list.component';
+import { FaqDetailsComponent } from './faq-details/faq-details.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { EconsumptionListComponent } from './econsumption-list/econsumption-list
     UserListComponent,
     UserDetailsComponent,
     RegisterComponent,
-    EconsumptionListComponent
+    EconsumptionListComponent,
+    FaqListComponent,
+    FaqDetailsComponent
   ],
   imports: [
     BrowserModule,

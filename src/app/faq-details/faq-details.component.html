@@ -1,0 +1,79 @@
+<h3>FAQ Details</h3>
+<form #forumQuestionForm="ngForm" (ngSubmit)="onSubmitQuestion()" class="mt-4">
+
+    <div class="form-row">
+
+        <div class="form-group col-md-3">
+            <label for="id">ID</label>
+            <input #id="ngModel" [(ngModel)]="forumQuestion.id" name="id" id="id" type="text" class="form-control"
+                [readonly]="true">
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="password">Created Date</label>
+            <input #createdDate="ngModel" [(ngModel)]="forumQuestion.createdDate" name="createdDate" id="createdDate"
+                type="text" class="form-control" [readonly]="true">
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input #username="ngModel" [(ngModel)]="forumQuestion.username" name="username" id="username" type="text"
+            class="form-control col-md-9" required [readonly]="true">
+    </div>
+
+    <div class="form-group">
+        <label for="question">Question</label>
+        <textarea #question="ngModel" [(ngModel)]="forumQuestion.question" name="question" id="question" type="text"
+            class="form-control col-md-9" rows="3" required [readonly]="isReadOnly"></textarea>
+        <div class="invalid-feedback d-block" *ngIf="question.touched && question.invalid"> Question is Required </div>
+    </div>
+
+    <div>
+        <a routerLink="/faq" class="btn btn-secondary"> FAQ List</a>
+        <button class="btn btn-success" [disabled]="!forumQuestionForm.valid || isReadOnly">Save</button>
+        <button *ngIf="forumQuestion.id && isEditEnabled()" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
+    </div>
+
+</form>
+
+
+<div class="mt-5" *ngIf="forumQuestion.id">
+    <div class="col-md-9 col-md-offset-2">
+        <div class="comment-wrapper">
+            <div class="panel panel-info">
+                <div class="panel-heading mb-2"> Answer Panel </div>
+                <div class="panel-body">
+
+                    <form #forumAnswerForm="ngForm" (ngSubmit)="onSubmitAnswer()">
+                        <textarea #answer="ngModel" [(ngModel)]="forumAnswer.answer" name="answer" id="answer"
+                            class="form-control" required placeholder="Your Answer..." rows="3"></textarea>
+                        <div class="invalid-feedback d-block" *ngIf="answer.touched && answer.invalid"> Answer is Required </div>
+                        <br>
+                        <button type="submit" class="btn btn-info float-right" [disabled]="!forumAnswerForm.valid">Post</button>
+                        <div class="clearfix"></div>
+                        <hr>
+                    </form>
+
+
+                    <ul class="media-list">
+                        <li class="media" *ngFor="let forumAnswer of forumQuestion.forumAnswers">
+                            <a href="#" class="pull-left mr-3">
+                                <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
+                            </a>
+                            <div class="media-body">
+                                <strong class="text-success">{{forumAnswer.username}}</strong>
+                                <span class="text-muted pull-right">
+                                    <small class="text-muted">on {{forumAnswer.createdDate}}</small>
+                                </span>
+                                <p> {{forumAnswer.answer}} </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

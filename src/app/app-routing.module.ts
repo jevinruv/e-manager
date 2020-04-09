@@ -11,6 +11,8 @@ import { AdminGuard } from './guards/admin.guard';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { RegisterComponent } from './register/register.component';
 import { EconsumptionListComponent } from './econsumption-list/econsumption-list.component';
+import { FaqListComponent } from './faq-list/faq-list.component';
+import { FaqDetailsComponent } from './faq-details/faq-details.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,10 @@ const routes: Routes = [
       { path: 'prediction/new', component: PredictionDetailsComponent },
       { path: 'prediction/:id', component: PredictionDetailsComponent },
       { path: 'prediction', component: PredictionListComponent },    
+
+      { path: 'faq/new', component: FaqDetailsComponent },
+      { path: 'faq/:id', component: FaqDetailsComponent },
+      { path: 'faq', component: FaqListComponent },  
 
       { path: 'econsumption', component: EconsumptionListComponent }, 
 
