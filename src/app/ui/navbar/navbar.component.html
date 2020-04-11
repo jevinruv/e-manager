@@ -12,9 +12,6 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/prediction/" routerLinkActive="active">Predictions</a>
         </li>
-        <li class="nav-item" *ngIf="isAdmin()">
-          <a class="nav-link" routerLink="/user/" routerLinkActive="active">Users</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/faq/" routerLinkActive="active">FAQ</a>
         </li>
@@ -22,15 +19,15 @@
           <a class="nav-link" routerLink="/econsumption/" routerLinkActive="active">E-Consumptions</a>
         </li>
   
-        <!-- <li class="nav-item dropdown" ngbDropdown>
+        <li class="nav-item dropdown" ngbDropdown *ngIf="isAdmin()">
           <a class="nav-link dropdown-toggle" ngbDropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false" routerLinkActive="active"> Orders
+            aria-haspopup="true" aria-expanded="false" routerLinkActive="active"> Administration
           </a>
           <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="/supplier-order/" routerLinkActive="active">Supplier Orders</a>
-            <a class="dropdown-item" routerLink="/sales-order/" routerLinkActive="active">Sales Orders</a>
+            <a class="dropdown-item" routerLink="/user/" routerLinkActive="active">Users</a>
+            <a class="dropdown-item" routerLink="/customer-category/" routerLinkActive="active">Customer Category</a>
           </div>
-        </li> -->
+        </li>
       </ul>
   
   

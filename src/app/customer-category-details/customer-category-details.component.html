@@ -1,0 +1,143 @@
+<h3>Customer Category Details</h3>
+
+<form #customerCategoryForm="ngForm" (ngSubmit)="onSubmit()" class="mt-4">
+
+    <div class="form-row">
+
+        <div class="form-group col-md-3">
+            <label for="id">ID</label>
+            <input #id="ngModel" [(ngModel)]="customerCategory.id" name="id" id="id" type="text" class="form-control"
+                [readonly]="true">
+        </div>
+        <div class="form-group col-md-5">
+            <label for="createdDate">Created Date</label>
+            <input #createdDate="ngModel" [(ngModel)]="customerCategory.createdDate" name="createdDate" id="createdDate"
+                type="text" class="form-control" [readonly]="true">
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input #name="ngModel" [(ngModel)]="customerCategory.name" name="name" id="name" type="text"
+            class="form-control col-md-8" required [readonly]="isReadOnly">
+        <div class="invalid-feedback d-block" *ngIf="name.touched && name.invalid"> Name is Required </div>
+    </div>
+
+    <div class="mt-5">
+
+        <h5>Range 1</h5>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="consumptionRangeStart1">Start</label>
+                <input #consumptionRangeStart1="ngModel" [(ngModel)]="customerCategoryPriceOne.consumptionRangeStart"
+                    name="consumptionRangeStart1" id="consumptionRangeStart1" type="text" class="form-control"
+                    [readonly]="true">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="consumptionRangeStop1">End</label>
+                <input #consumptionRangeStop1="ngModel" [(ngModel)]="customerCategoryPriceOne.consumptionRangeStop" (ngModelChange)="onRangeChanged($event)"
+                    name="consumptionRangeStop1" id="consumptionRangeStop1" type="text" class="form-control"
+                    [readonly]="isReadOnly">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-3">
+                <label for="energyCharge">Energy Charge</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
+                    <input #energyCharge="ngModel" [(ngModel)]="customerCategoryPriceOne.energyCharge"
+                        name="energyCharge" id="energyCharge" type="number" class="form-control" [readonly]="isReadOnly">
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="createdDate">Fuel Adjustment Charge</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
+                    <input #fuelAdjustmentCharge="ngModel" [(ngModel)]="customerCategoryPriceOne.fuelAdjustmentCharge"
+                        name="fuelAdjustmentCharge" id="fuelAdjustmentCharge" type="number" class="form-control"
+                        required [readonly]="isReadOnly">
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="fixedCharge">Fixed Charge</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
+                    <input #fixedCharge="ngModel" [(ngModel)]="customerCategoryPriceOne.fixedCharge" name="fixedCharge"
+                        id="fixedCharge" type="number" class="form-control" [readonly]="isReadOnly">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="mt-5">
+
+        <h5>Range 2</h5>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="consumptionRangeStart">Start</label>
+                <input #consumptionRangeStart="ngModel" [(ngModel)]="customerCategoryPriceTwo.consumptionRangeStart"
+                    name="consumptionRangeStart" id="consumptionRangeStart" type="text" class="form-control"
+                    [readonly]="true">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="consumptionRangeStop">End</label>
+                <input #consumptionRangeStop="ngModel" [(ngModel)]="customerCategoryPriceTwo.consumptionRangeStop"
+                    name="consumptionRangeStop" id="consumptionRangeStop" type="text" class="form-control"
+                    [readonly]="true">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-3">
+                <label for="energyCharge">Energy Charge</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
+                    <input #energyCharge="ngModel" [(ngModel)]="customerCategoryPriceTwo.energyCharge"
+                        name="energyCharge" id="energyCharge" type="number" class="form-control" [readonly]="isReadOnly">
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="createdDate">Fuel Adjustment Charge</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
+                    <input #fuelAdjustmentCharge="ngModel" [(ngModel)]="customerCategoryPriceTwo.fuelAdjustmentCharge"
+                        name="fuelAdjustmentCharge" id="fuelAdjustmentCharge" type="number" class="form-control"
+                        required [readonly]="isReadOnly">
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="fixedCharge">Fixed Charge</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
+                    <input #fixedCharge="ngModel" [(ngModel)]="customerCategoryPriceTwo.fixedCharge" name="fixedCharge"
+                        id="fixedCharge" type="number" class="form-control" [readonly]="isReadOnly">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div>
+        <a routerLink="/customer-category" class="btn btn-secondary"> Customer Category List</a>
+        <button class="btn btn-success" [disabled]="!customerCategoryForm.valid || isReadOnly">Save</button>
+        <button *ngIf="customerCategory.id" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
+        <button *ngIf="customerCategory.id" type="button" (click)="deleteRecord()" class="btn btn-danger">Delete</button>
+    </div>
+
+</form>

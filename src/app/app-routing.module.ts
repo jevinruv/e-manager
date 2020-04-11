@@ -14,6 +14,8 @@ import { EconsumptionListComponent } from './econsumption-list/econsumption-list
 import { FaqListComponent } from './faq-list/faq-list.component';
 import { FaqDetailsComponent } from './faq-details/faq-details.component';
 import { EconsumptionsDetailsComponent } from './econsumptions-details/econsumptions-details.component';
+import { CustomerCategoryListComponent } from './customer-category-list/customer-category-list.component';
+import { CustomerCategoryDetailsComponent } from './customer-category-details/customer-category-details.component';
 
 
 const routes: Routes = [
@@ -38,6 +40,11 @@ const routes: Routes = [
       { path: 'user/new', component: UserDetailsComponent },    
       { path: 'user/:id', component: UserDetailsComponent },    
       { path: 'user', component: UserListComponent, canActivate: [AdminGuard] },    
+
+      { path: 'customer-category/new', component: CustomerCategoryDetailsComponent, canActivate: [AdminGuard]},    
+      { path: 'customer-category/:id', component: CustomerCategoryDetailsComponent, canActivate: [AdminGuard] },    
+      { path: 'customer-category', component: CustomerCategoryListComponent, canActivate: [AdminGuard] }, 
+
     ]
   },
 

@@ -1,0 +1,30 @@
+<h3>Customer Category List</h3>
+
+<p class="float-right">
+    <a routerLink="/customer-category/new" class="btn btn-primary"> New Customer Category </a>
+</p>
+
+<p>
+    <input #query (keyup)="filter(query.value)" type="text" placeholder="Search..." class="form-control">
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Created Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customerCategory of filteredCustomerCategoryList" [routerLink]="[customerCategory.id]">
+            <td>{{customerCategory.id}}</td>
+            <td>{{customerCategory.name}}</td>
+            <td>{{customerCategory.createdDate}}</td>
+            <td>
+                <a [routerLink]="[customerCategory.id]">Manage</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
