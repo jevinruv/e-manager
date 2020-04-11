@@ -82,9 +82,10 @@
 
             <div>
                 <a routerLink="/econsumption" class="btn btn-secondary">E-Consumption List</a>
+                <a routerLink="/prediction/new" class="btn btn-warning">Prediction</a>
                 <button class="btn btn-success" [disabled]="!eConsumptionForm.valid || isReadOnly">Save</button>
                 <button *ngIf="eConsumption.id" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
-                <button *ngIf="eConsumption.id" type="button" (click)="edit()" class="btn btn-info">View Graph</button>
+                <button *ngIf="eConsumption.id" type="button" (click)="viewGraph()" class="btn btn-info">View Graph</button>
             </div>
 
         </form>
@@ -137,5 +138,27 @@
             </div>
 
         </form>
+
+        <div class="mt-5" *ngIf="graphData != null ">
+
+            <h5>Graph</h5>
+
+            <ngx-charts-line-chart
+            [view]="view"
+            [legend]="legend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxis]="xAxis"
+            [yAxis]="yAxis"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [timeline]="timeline"
+            [results]="graphData"
+            >
+          </ngx-charts-line-chart>
+        </div>
+
     </div>
 </div>
+
+
