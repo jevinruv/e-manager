@@ -84,6 +84,7 @@
                 <a routerLink="/econsumption" class="btn btn-secondary">E-Consumption List</a>
                 <button class="btn btn-success" [disabled]="!eConsumptionForm.valid || isReadOnly">Save</button>
                 <button *ngIf="eConsumption.id" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
+                <button *ngIf="eConsumption.id" type="button" (click)="edit()" class="btn btn-info">View Graph</button>
             </div>
 
         </form>

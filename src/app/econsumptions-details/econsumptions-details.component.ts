@@ -4,8 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { EConsumption } from '../models/econsumption';
 import { EconsumptionService } from '../services/econsumption.service';
 import { CommonValueService } from '../services/common-value.service';
-import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
-import { DatePipe } from '@angular/common';
 import { CustomerCategory } from '../models/customer-category';
 import { CustomerCategoryService } from '../services/customer-category.service';
 
@@ -19,7 +17,6 @@ export class EconsumptionsDetailsComponent implements OnInit {
   eConsumption: EConsumption = new EConsumption();
   isReadOnly = true;
   id: string;
-
   customerCategoryList: CustomerCategory[] = [];
   selectedCustomerCategory;
 
@@ -27,9 +24,7 @@ export class EconsumptionsDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private eConsumptionService: EconsumptionService,
     private customerCategoryService: CustomerCategoryService,
-    private toastr: ToastrService,
-    private commonValuesService: CommonValueService
-  ) { }
+    private toastr: ToastrService  ) { }
 
   ngOnInit() {
 
@@ -59,15 +54,17 @@ export class EconsumptionsDetailsComponent implements OnInit {
 
     console.log(this.eConsumption);
 
-    this.eConsumptionService.addOrUpdate(this.eConsumption).subscribe(
-      data => {
-        console.log(data);
+    this.eConsumptionService.addOrUpdate(this.eConsumption).subscribe(data => {
+
+      console.log(data);
+
+      if (data) {
         this.isReadOnly = true;
-      },
-      error => {
-        console.log(error);
+      }
+      else {
         this.toastr.error("Already Exists");
-      });
+      }
+    });
   }
 
   edit() {
