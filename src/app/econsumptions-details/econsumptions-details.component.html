@@ -85,7 +85,7 @@
                 <a routerLink="/prediction/new" class="btn btn-warning">Prediction</a>
                 <button class="btn btn-success" [disabled]="!eConsumptionForm.valid || isReadOnly">Save</button>
                 <button *ngIf="eConsumption.id" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
-                <button *ngIf="eConsumption.id" type="button" (click)="viewGraph()" class="btn btn-info">View Graph</button>
+                <button *ngIf="eConsumption.id && eConsumption.consumptionActual" type="button" (click)="viewGraph()" class="btn btn-info">View Graph</button>
             </div>
 
         </form>
