@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private tokenService: TokenService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -32,6 +34,12 @@ export class NavbarComponent implements OnInit {
 
   isAdmin(){
     return this.type === ("ADMIN");
+  }
+
+  userAccount(){
+
+    let userId = this.tokenService.getUserID();
+    this.router.navigate(['/user/'+ userId]);
   }
 
 }

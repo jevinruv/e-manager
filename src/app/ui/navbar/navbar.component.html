@@ -49,8 +49,7 @@
             <b>{{username}}</b> - {{type}}
           </a>
           <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Option</a>
-            <a class="dropdown-item" href="#">Option2</a>
+            <a class="dropdown-item" (click)="userAccount()" routerLinkActive="active">Account</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" (click)="logout()">Logout</a>
           </div>
