@@ -1,0 +1,81 @@
+<h3>eConsumption Details</h3>
+
+<form #eConsumptionForm="ngForm" (ngSubmit)="onSubmit()" class="mt-4">
+
+    <div class="form-row">
+
+        <div class="form-group col-md-5">
+            <label for="id">ID</label>
+            <input #id="ngModel" [(ngModel)]="eConsumption.id" name="id" id="id" type="text" class="form-control"
+                [readonly]="true">
+        </div>
+
+        <div class="form-group col-md-5">
+            <label for="consumptionPlannedDate">Consumption Planned Date</label>
+            <input #consumptionPlannedDate="ngModel" [(ngModel)]="eConsumption.consumptionPlannedDate"
+                name="consumptionPlannedDate" id="consumptionPlannedDate" type="text" class="form-control"
+                [readonly]="true">
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="consumptionDate">Consumption Date</label>
+        <input #consumptionDate="ngModel" [ngModel]="eConsumption.consumptionDate | date:'yyyy-MM-dd'" (ngModelChange)="eConsumption.consumptionDate = $event" name="consumptionDate"
+            id="consumptionDate" type="date" class="form-control col-md-5" required [readonly]="isReadOnly">
+        <div class="invalid-feedback d-block" *ngIf="consumptionDate.touched && consumptionDate.invalid"> Consumption
+            Date is Required </div>
+    </div>
+
+    <div class="form-row">
+
+        <div class="form-group col-md-5">
+            <label for="consumptionPlanned">Consumption Planned</label>
+            <input #consumptionPlanned="ngModel" [(ngModel)]="eConsumption.consumptionPlanned" name="consumptionPlanned"
+                id="consumptionPlanned" type="number" class="form-control" required [readonly]="isReadOnly" (ngModelChange)="onCPChanged($event)">
+            <div class="invalid-feedback d-block" *ngIf="consumptionPlanned.touched && consumptionPlanned.invalid">
+                Consumption Planned is Required </div>
+        </div>
+
+        <div class="form-group col-md-5">
+            <label for="consumptionPlannedCost">Consumption Planned Cost</label>
+            <div class="input-group">
+                <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
+                <input #consumptionPlannedCost="ngModel" [(ngModel)]="eConsumption.consumptionPlannedCost"
+                name="consumptionPlannedCost" id="consumptionPlannedCost" type="number" class="form-control" required
+                [readonly]="isReadOnly">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-row">
+
+        <div class="form-group col-md-5">
+            <label for="consumptionActual">Consumption Actual</label>
+            <input #consumptionActual="ngModel" [(ngModel)]="eConsumption.consumptionActual" name="consumptionActual"
+                id="consumptionActual" type="number" class="form-control" required [readonly]="isReadOnly" (ngModelChange)="onCAChanged($event)">
+            <div class="invalid-feedback d-block" *ngIf="consumptionActual.touched && consumptionActual.invalid">
+                Consumption Actual is Required </div>
+        </div>
+
+        <div class="form-group col-md-5">
+            <label for="consumptionActualCost">Consumption Actual Cost</label>
+            <div class="input-group">
+                <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
+                <input #consumptionActualCost="ngModel" [(ngModel)]="eConsumption.consumptionActualCost"
+                name="consumptionActualCost" id="consumptionActualCost" type="number" class="form-control" required
+                [readonly]="isReadOnly">
+            </div>
+        </div>
+
+
+    </div>
+
+    <div>
+        <a routerLink="/econsumption" class="btn btn-secondary">E-Consumption List</a>
+        <button class="btn btn-success" [disabled]="!eConsumptionForm.valid || isReadOnly">Save</button>
+        <button *ngIf="eConsumption.id" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
+    </div>
+
+</form>

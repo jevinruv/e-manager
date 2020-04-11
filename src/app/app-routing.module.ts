@@ -13,6 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { EconsumptionListComponent } from './econsumption-list/econsumption-list.component';
 import { FaqListComponent } from './faq-list/faq-list.component';
 import { FaqDetailsComponent } from './faq-details/faq-details.component';
+import { EconsumptionsDetailsComponent } from './econsumptions-details/econsumptions-details.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,8 @@ const routes: Routes = [
       { path: 'faq/:id', component: FaqDetailsComponent },
       { path: 'faq', component: FaqListComponent },  
 
+      { path: 'econsumption/new', component: EconsumptionsDetailsComponent }, 
+      { path: 'econsumption/:id', component: EconsumptionsDetailsComponent }, 
       { path: 'econsumption', component: EconsumptionListComponent }, 
 
       { path: 'user/new', component: UserDetailsComponent },    

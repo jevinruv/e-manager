@@ -21,6 +21,7 @@ import { RegisterComponent } from './register/register.component';
 import { EconsumptionListComponent } from './econsumption-list/econsumption-list.component';
 import { FaqListComponent } from './faq-list/faq-list.component';
 import { FaqDetailsComponent } from './faq-details/faq-details.component';
+import { EconsumptionsDetailsComponent } from './econsumptions-details/econsumptions-details.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FaqDetailsComponent } from './faq-details/faq-details.component';
     RegisterComponent,
     EconsumptionListComponent,
     FaqListComponent,
-    FaqDetailsComponent
+    FaqDetailsComponent,
+    EconsumptionsDetailsComponent
   ],
   imports: [
     BrowserModule,

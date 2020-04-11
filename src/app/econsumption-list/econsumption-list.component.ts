@@ -21,11 +21,11 @@ export class EconsumptionListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.eConsumptionService.getAll().subscribe(data => {
-      // console.log(data);
-      this.filteredEConsumptionList = this.eConsumptionList = data;
-      this.viewByCategory();
-    });
+    // this.eConsumptionService.getAll().subscribe(data => {
+    //   // console.log(data);
+    //   this.filteredEConsumptionList = this.eConsumptionList = data;
+    //   this.viewByCategory();
+    // });
 
     // this.viewByCategory();
 
