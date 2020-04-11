@@ -23,4 +23,8 @@ export class EconsumptionService {
     return this.http.post<EConsumption>(this.API_URL, user);
   }
 
+  calculateConsumption(calc) {
+    return this.http.post(this.API_URL + "/consumption-calculate", calc);
+  }
+
 }

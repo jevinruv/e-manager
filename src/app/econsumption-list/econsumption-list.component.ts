@@ -21,13 +21,13 @@ export class EconsumptionListComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.eConsumptionService.getAll().subscribe(data => {
-    //   // console.log(data);
-    //   this.filteredEConsumptionList = this.eConsumptionList = data;
-    //   this.viewByCategory();
-    // });
+    this.eConsumptionService.getAll().subscribe(data => {
+      console.log(data);
+      this.filteredEConsumptionList = this.eConsumptionList = data;
+      this.viewByCategory();
+    });
 
-    // this.viewByCategory();
+    this.viewByCategory();
 
   }
 
@@ -37,62 +37,78 @@ export class EconsumptionListComponent implements OnInit {
       this.selectedCategory = params.get('category');
 
       // console.log(this.selectedCategory);
-      this.prepareCategories(this.selectedCategory)
+      this.sorter(this.selectedCategory)
 
     });
 
   }
 
-  private prepareCategories(category) {
+  private sorter(category) {
 
-    let groupedResults = _(this.eConsumptionList)
-      .map(item => {
-
-        let st = item["consumptionDate"];
-        let pattern = /(\d{2})\-(\d{2})\-(\d{4})/;
-        let dt = new Date(st.replace(pattern,'$3-$2-$1'));
-        let consumptionDate = null;
-
-        switch(category){
-          case 'daily':
-            consumptionDate = dt.getDate();
-          break;
-          case 'weekly':
-            consumptionDate = item["weekNo"];
-          break;
-          case 'monthly':
-            consumptionDate = this.getMonthName(dt.getMonth());
-          break;
-          case 'annually':
-            consumptionDate = dt.getFullYear();
-          break;
-        }
-
-        return {
-                  date: consumptionDate + " - " + dt.getFullYear(),
-                  consumption: parseInt(item["consumption"])
-                }
-      })
-      .groupBy("date")
-      .mapValues(item => {
-          // console.log(item);
-           return _.sumBy(item, 'consumption');
-       })
-      .value()
-
-      console.log(groupedResults);
-      this.filteredEConsumptionList = groupedResults;
-      // console.log(this.filteredEConsumptionList);
+    if (category == 'planned') {
+      this.filteredEConsumptionList = this.eConsumptionList.filter(e => e.consumptionActualCost == null);
+    }
+    else if (category == 'completed') {
+      this.filteredEConsumptionList = this.eConsumptionList.filter(e => e.consumptionActualCost != null);
+    }
+    else {
+      this.filteredEConsumptionList = this.eConsumptionList;
+    }
 
   }
 
-  private getMonthName(month){
+  
 
-    var months = [ "January", "February", "March", "April", "May", "June", 
-           "July", "August", "September", "October", "November", "December" ];
+  // private prepareCategories(category) {
 
-    return months[month];
-  }
+  //   let groupedResults = _(this.eConsumptionList)
+  //     .map(item => {
+
+  //       let st = item["consumptionDate"];
+  //       let pattern = /(\d{2})\-(\d{2})\-(\d{4})/;
+  //       let dt = new Date(st.replace(pattern,'$3-$2-$1'));
+  //       let consumptionDate = null;
+
+  //       switch(category){
+  //         case 'daily':
+  //           consumptionDate = dt.getDate();
+  //         break;
+  //         case 'weekly':
+  //           consumptionDate = item["weekNo"];
+  //         break;
+  //         case 'monthly':
+  //           consumptionDate = this.getMonthName(dt.getMonth());
+  //         break;
+  //         case 'annually':
+  //           consumptionDate = dt.getFullYear();
+  //         break;
+  //       }
+
+  //       return {
+  //                 date: consumptionDate + " - " + dt.getFullYear(),
+  //                 consumption: parseInt(item["consumption"])
+  //               }
+  //     })
+  //     .groupBy("date")
+  //     .mapValues(item => {
+  //         // console.log(item);
+  //          return _.sumBy(item, 'consumption');
+  //      })
+  //     .value()
+
+  //     console.log(groupedResults);
+  //     this.filteredEConsumptionList = groupedResults;
+  //     // console.log(this.filteredEConsumptionList);
+
+  // }
+
+  // private getMonthName(month){
+
+  //   var months = [ "January", "February", "March", "April", "May", "June", 
+  //          "July", "August", "September", "October", "November", "December" ];
+
+  //   return months[month];
+  // }
 
 
 }

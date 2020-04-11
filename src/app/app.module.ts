@@ -24,6 +24,7 @@ import { FaqDetailsComponent } from './faq-details/faq-details.component';
 import { EconsumptionsDetailsComponent } from './econsumptions-details/econsumptions-details.component';
 import { CustomerCategoryListComponent } from './customer-category-list/customer-category-list.component';
 import { CustomerCategoryDetailsComponent } from './customer-category-details/customer-category-details.component';
+import { ConsumptionCalculatorComponent } from './consumption-calculator/consumption-calculator.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CustomerCategoryDetailsComponent } from './customer-category-details/cu
     FaqDetailsComponent,
     EconsumptionsDetailsComponent,
     CustomerCategoryListComponent,
-    CustomerCategoryDetailsComponent
+    CustomerCategoryDetailsComponent,
+    ConsumptionCalculatorComponent
   ],
   imports: [
     BrowserModule,

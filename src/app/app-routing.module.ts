@@ -16,6 +16,7 @@ import { FaqDetailsComponent } from './faq-details/faq-details.component';
 import { EconsumptionsDetailsComponent } from './econsumptions-details/econsumptions-details.component';
 import { CustomerCategoryListComponent } from './customer-category-list/customer-category-list.component';
 import { CustomerCategoryDetailsComponent } from './customer-category-details/customer-category-details.component';
+import { ConsumptionCalculatorComponent } from './consumption-calculator/consumption-calculator.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,9 @@ const routes: Routes = [
       { path: 'econsumption/new', component: EconsumptionsDetailsComponent }, 
       { path: 'econsumption/:id', component: EconsumptionsDetailsComponent }, 
       { path: 'econsumption', component: EconsumptionListComponent }, 
+
+      { path: 'consumption-calculator/new', component: ConsumptionCalculatorComponent }, 
+      { path: 'consumption-calculator/:id', component: ConsumptionCalculatorComponent }, 
 
       { path: 'user/new', component: UserDetailsComponent },    
       { path: 'user/:id', component: UserDetailsComponent },    

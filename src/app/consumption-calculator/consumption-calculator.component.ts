@@ -1,34 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { EConsumption } from '../models/econsumption';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { EconsumptionService } from '../services/econsumption.service';
-import { CommonValueService } from '../services/common-value.service';
-import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
-import { DatePipe } from '@angular/common';
-import { CustomerCategory } from '../models/customer-category';
 import { CustomerCategoryService } from '../services/customer-category.service';
+import { CustomerCategory } from '../models/customer-category';
 
 @Component({
-  selector: 'app-econsumptions-details',
-  templateUrl: './econsumptions-details.component.html',
-  styleUrls: ['./econsumptions-details.component.css']
+  selector: 'app-consumption-calculator',
+  templateUrl: './consumption-calculator.component.html',
+  styleUrls: ['./consumption-calculator.component.css']
 })
-export class EconsumptionsDetailsComponent implements OnInit {
+export class ConsumptionCalculatorComponent implements OnInit {
 
   eConsumption: EConsumption = new EConsumption();
+  customerCategoryList: CustomerCategory[] = [];
+  selectedCustomerCategory;
   isReadOnly = true;
   id: string;
 
-  customerCategoryList: CustomerCategory[] = [];
-  selectedCustomerCategory;
-
   constructor(
-    private route: ActivatedRoute,
     private eConsumptionService: EconsumptionService,
     private customerCategoryService: CustomerCategoryService,
     private toastr: ToastrService,
-    private commonValuesService: CommonValueService
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
@@ -39,26 +34,22 @@ export class EconsumptionsDetailsComponent implements OnInit {
     });
 
     this.id = this.route.snapshot.paramMap.get('id');
-   
+
     if (this.id) {
       this.eConsumptionService.get(this.id).subscribe(data => {
         console.log(data);
         this.eConsumption = data;
       });
-
     }
     else {
       this.isReadOnly = false;
     }
-
   }
 
   onSubmit() {
 
-    delete this.eConsumption.consumptionPlannedDate;
-   
-    this.eConsumptionService.addOrUpdate(this.eConsumption).subscribe(data => {
-      console.log(data);
+    this.eConsumptionService.addOrUpdate(this.eConsumption).subscribe(() => {
+      // console.log(data);
       this.isReadOnly = true;
     });
   }
@@ -66,22 +57,6 @@ export class EconsumptionsDetailsComponent implements OnInit {
   edit() {
     this.isReadOnly = !this.isReadOnly;
   }
-
-  // onCPChanged(value) {
-
-  //   if(value){
-  //     // console.log(value);
-  //     this.eConsumption.consumptionPlannedCost = value * this.kwhCost;
-  //   }
-  // }
-
-  // onCAChanged(value) {
-
-  //   if(value){
-  //     // console.log(value);
-  //     this.eConsumption.consumptionActualCost = value * this.kwhCost;
-  //   }
-  // }
 
   getCost() {
 

@@ -2,11 +2,9 @@
 
 <div class="mt-4 mb-3">
 
-  <!-- <a routerLink="/supplier-order/" class="btn btn-warning"> All </a> -->
-  <a routerLink="/econsumption/" [queryParams]="{ category: 'daily' }" class="btn btn-success"> Daily </a>
-  <a routerLink="/econsumption/" [queryParams]="{ category: 'weekly' }" class="btn btn-success"> Weekly </a>
-  <a routerLink="/econsumption/" [queryParams]="{ category: 'monthly' }" class="btn btn-success"> Monthly </a>
-  <a routerLink="/econsumption/" [queryParams]="{ category: 'quarterly' }" class="btn btn-success"> Quarterly </a>
+  <a routerLink="/econsumption/" class="btn btn-warning"> All </a>
+  <a routerLink="/econsumption/" [queryParams]="{ category: 'planned' }" class="btn btn-success"> Planned </a>
+  <a routerLink="/econsumption/" [queryParams]="{ category: 'completed' }" class="btn btn-success"> Completed </a>
   <a routerLink="/econsumption/new" class="btn btn-primary float-right"> New E-Consumption </a>
 </div>
 
@@ -18,18 +16,21 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Status</th>
-      <th>Consumption</th>
+      <th>Consumption Date</th>
+      <th>ConsumptionPlanned</th>
+      <th>Consumption Planned Cost</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <!-- <tr *ngFor="let eConsumption of filteredEConsumptionList | keyvalue" [routerLink]="[eConsumption.key]">
-      <td>{{eConsumption.key}}</td> 
-      <td>{{eConsumption.value}}</td> 
+    <tr *ngFor="let eConsumption of filteredEConsumptionList" [routerLink]="[eConsumption.id]">
+      <td>{{eConsumption.id}}</td> 
+      <td>{{eConsumption.consumptionDate}}</td> 
+      <td>{{eConsumption.consumptionPlanned}}</td> 
+      <td>{{eConsumption.consumptionPlannedCost}}</td> 
       <td> 
-         <a [routerLink]="[eConsumption.key]">Manage</a> 
+         <a [routerLink]="[eConsumption.id]">Manage</a> 
        </td> 
-    </tr> -->
+    </tr>
   </tbody>
 </table>
