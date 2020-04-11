@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EconsumptionService } from '../services/econsumption.service';
 import { ActivatedRoute } from '@angular/router';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 
 @Component({
   selector: 'app-econsumption-list',

@@ -39,7 +39,7 @@ export class EconsumptionsDetailsComponent implements OnInit {
     });
 
     this.id = this.route.snapshot.paramMap.get('id');
-   
+
     if (this.id) {
       this.eConsumptionService.get(this.id).subscribe(data => {
         console.log(data);
@@ -56,47 +56,36 @@ export class EconsumptionsDetailsComponent implements OnInit {
   onSubmit() {
 
     delete this.eConsumption.consumptionPlannedDate;
-   
-    this.eConsumptionService.addOrUpdate(this.eConsumption).subscribe(data => {
-      console.log(data);
-      this.isReadOnly = true;
-    });
+
+    console.log(this.eConsumption);
+
+    this.eConsumptionService.addOrUpdate(this.eConsumption).subscribe(
+      data => {
+        console.log(data);
+        this.isReadOnly = true;
+      },
+      error => {
+        console.log(error);
+        this.toastr.error("Already Exists");
+      });
   }
 
   edit() {
     this.isReadOnly = !this.isReadOnly;
   }
 
-  // onCPChanged(value) {
-
-  //   if(value){
-  //     // console.log(value);
-  //     this.eConsumption.consumptionPlannedCost = value * this.kwhCost;
-  //   }
-  // }
-
-  // onCAChanged(value) {
-
-  //   if(value){
-  //     // console.log(value);
-  //     this.eConsumption.consumptionActualCost = value * this.kwhCost;
-  //   }
-  // }
-
   getCost() {
-
-    console.log();
 
     let calc = {
       customerCategoryId: this.selectedCustomerCategory,
-      consumptionValue: this.eConsumption.consumptionPlanned
+      consumptionValue: this.eConsumption.consumptionActual
     };
 
     console.log(calc);
 
     this.eConsumptionService.calculateConsumption(calc).subscribe(data => {
       console.log(data);
-      this.eConsumption.consumptionPlannedCost = parseInt(data.toString());
+      this.eConsumption.consumptionActualCost = parseInt(data.toString());
     });
 
     this.toastr.success("Calculation Submitted");

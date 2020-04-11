@@ -89,7 +89,7 @@
         </form>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-5" *ngIf="eConsumption.id">
 
         <h5>Calculator</h5>
         <form #eConsumptionForm="ngForm" (ngSubmit)="onSubmit()" class="mt-4">
@@ -101,36 +101,34 @@
                     <option *ngFor="let customerCategory of customerCategoryList" [value]="customerCategory.id">
                         {{customerCategory.name}} </option>
                 </select>
-                <!-- <div class="invalid-feedback d-block" *ngIf="selectedCustomerCategory.touched && selectedCustomerCategory.invalid"> Customer
-                    Category is Required </div> -->
             </div>
 
             <div class="form-row">
 
                 <div class="form-group col-md-5">
-                    <label for="consumptionPlanned">Consumption Planned</label>
+                    <label for="consumptionActual">Consumption</label>
                     <div class="input-group">
-                        <input #consumptionPlanned="ngModel" [(ngModel)]="eConsumption.consumptionPlanned"
-                            name="consumptionPlanned" id="consumptionPlanned" type="number" class="form-control"
+                        <input #consumptionActual="ngModel" [(ngModel)]="eConsumption.consumptionActual"
+                            name="consumptionActual" id="consumptionActual" type="number" class="form-control"
                             required>
                         <div class="input-group-append">
                             <button class="btn btn-warning" type="button"
-                                [disabled]="eConsumption.consumptionPlanned == null || selectedCustomerCategory == null "
+                                [disabled]="eConsumption.consumptionActual == null || selectedCustomerCategory == null "
                                 (click)="getCost()">Get Cost</button>
                         </div>
                         <div class="invalid-feedback d-block"
-                            *ngIf="consumptionPlanned.touched && consumptionPlanned.invalid">
+                            *ngIf="consumptionActual.touched && consumptionActual.invalid">
                             Consumption Planned is Required </div>
                     </div>
                 </div>
 
                 <div class="form-group col-md-5">
-                    <label for="consumptionPlannedCost">Consumption Cost</label>
+                    <label for="consumptionActualCost">Consumption Cost</label>
                     <div class="input-group">
                         <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span>
                         </div>
-                        <input #consumptionPlannedCost="ngModel" [(ngModel)]="eConsumption.consumptionPlannedCost"
-                            name="consumptionPlannedCost" id="consumptionPlannedCost" type="number" class="form-control"
+                        <input #consumptionActualCost="ngModel" [(ngModel)]="eConsumption.consumptionActualCost"
+                            name="consumptionActualCost" id="consumptionActualCost" type="number" class="form-control"
                             required [readonly]="true">
                     </div>
                 </div>
