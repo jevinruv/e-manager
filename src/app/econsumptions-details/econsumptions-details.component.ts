@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EConsumption } from '../models/econsumption';
 import { EconsumptionService } from '../services/econsumption.service';
-import { CommonValueService } from '../services/common-value.service';
 import { CustomerCategory } from '../models/customer-category';
 import { CustomerCategoryService } from '../services/customer-category.service';
 import * as jsPDF from 'jspdf';
@@ -47,7 +46,7 @@ export class EconsumptionsDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.customerCategoryService.getAll().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.customerCategoryList = data;
     });
 
@@ -55,12 +54,12 @@ export class EconsumptionsDetailsComponent implements OnInit {
 
     if (this.id) {
       this.eConsumptionService.get(this.id).subscribe(data => {
-        console.log(data);
+        // console.log(data);
         this.eConsumption = data;
       });
 
       this.eConsumptionService.getAll().subscribe(data => {
-        console.log(data);
+        // console.log(data);
         this.eConsumptionList = data;
       });
 
@@ -75,14 +74,15 @@ export class EconsumptionsDetailsComponent implements OnInit {
 
     delete this.eConsumption.consumptionPlannedDate;
 
-    console.log(this.eConsumption);
+    // console.log(this.eConsumption);
 
     this.eConsumptionService.addOrUpdate(this.eConsumption).subscribe(data => {
 
-      console.log(data);
+      // console.log(data);
 
       if (data) {
         this.isReadOnly = true;
+        this.validateConsumptions();
       }
       else {
         this.toastr.error("Already Exists");
@@ -101,10 +101,10 @@ export class EconsumptionsDetailsComponent implements OnInit {
       consumptionValue: this.eConsumption.consumptionActual
     };
 
-    console.log(calc);
+    // console.log(calc);
 
     this.eConsumptionService.calculateConsumption(calc).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.eConsumption.consumptionActualCost = parseInt(data.toString());
     });
 
@@ -126,22 +126,22 @@ export class EconsumptionsDetailsComponent implements OnInit {
       { name: "Planned", series: planned },
     ];
 
-    console.log(this.graphData);
+    // console.log(this.graphData);
 
-    this.validateConsumptions();
+    // this.validateConsumptions();
   }
 
-  private validateConsumptions() {
+  validateConsumptions() {
 
     if (this.eConsumption.consumptionActualCost > this.eConsumption.consumptionPlannedCost) {
 
       let difference = this.eConsumption.consumptionActualCost - this.eConsumption.consumptionPlannedCost;
-
       this.toastr.warning("Consumption is higher by LKR " + difference);
+      // let report = this.printReport("generate");
+      // this.sendEmail(report);
     }
     else {
       let difference = this.eConsumption.consumptionPlannedCost - this.eConsumption.consumptionActualCost;
-
       this.toastr.success("Consumption is Saved by LKR " + difference);
     }
   }
@@ -168,7 +168,20 @@ export class EconsumptionsDetailsComponent implements OnInit {
     doc.addPage();
     doc.addImage(graphDataURL, 'PNG', 1, 2, 0, 0, 'econsumption_graph');
     doc.save(title + '.pdf'); // Generated PDF 
-
   }
+
+  // sendEmail(report){
+
+  //   let emailObj = {
+  //     report: report,
+  //     consumption: this.eConsumption
+  //   };
+
+  //   console.log(emailObj);
+
+  //   // this.eConsumptionService.sendEmail(emailObj).subscribe(data => {
+
+  //   // });
+  // }
 
 }
