@@ -95,8 +95,5 @@ export class PredictionDetailsComponent implements OnInit {
     });
 
   }
-
-
-
   
 }

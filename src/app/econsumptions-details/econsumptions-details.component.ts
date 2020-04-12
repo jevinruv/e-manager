@@ -6,6 +6,8 @@ import { EconsumptionService } from '../services/econsumption.service';
 import { CommonValueService } from '../services/common-value.service';
 import { CustomerCategory } from '../models/customer-category';
 import { CustomerCategoryService } from '../services/customer-category.service';
+import * as jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-econsumptions-details',
@@ -22,7 +24,7 @@ export class EconsumptionsDetailsComponent implements OnInit {
   selectedCustomerCategory;
 
   graphData: any[];
-  view: any[] = [700, 300];
+  view: any[] = [700, 400];
 
   // options
   legend: boolean = true;
@@ -32,8 +34,8 @@ export class EconsumptionsDetailsComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Year';
-  yAxisLabel: string = 'Population';
+  xAxisLabel: string = 'Date';
+  yAxisLabel: string = 'Consumption (kWh)';
   timeline: boolean = true;
 
   constructor(
@@ -129,19 +131,44 @@ export class EconsumptionsDetailsComponent implements OnInit {
     this.validateConsumptions();
   }
 
-  private validateConsumptions(){
+  private validateConsumptions() {
 
-    if(this.eConsumption.consumptionActualCost > this.eConsumption.consumptionPlannedCost){
+    if (this.eConsumption.consumptionActualCost > this.eConsumption.consumptionPlannedCost) {
 
       let difference = this.eConsumption.consumptionActualCost - this.eConsumption.consumptionPlannedCost;
 
       this.toastr.warning("Consumption is higher by LKR " + difference);
     }
-    else{
+    else {
       let difference = this.eConsumption.consumptionPlannedCost - this.eConsumption.consumptionActualCost;
 
       this.toastr.success("Consumption is Saved by LKR " + difference);
     }
+  }
+
+  async printReport() {
+
+    let title = "E-Consumption #" + this.eConsumption.id.toString() + " For " + this.eConsumption.consumptionDate.toString();
+    var consumptionDetails = document.getElementById('consumptionDetails');
+    var graphDetails = document.getElementById('graphDetails');
+    let consumptionDataURL;
+    let graphDataURL;
+
+    var doc = new jsPDF({
+      orientation: 'landscape',
+      unit: 'in',
+      format: 'a4'
+    });
+
+    await html2canvas(consumptionDetails).then(canvas => consumptionDataURL = canvas.toDataURL('image/png'));
+    await html2canvas(graphDetails).then(canvas => graphDataURL = canvas.toDataURL('image/png'));
+    
+    doc.text(title, 1, 1);
+    doc.addImage(consumptionDataURL, 'PNG', 1, 2, 0, 0, 'econsumption_details');
+    doc.addPage();
+    doc.addImage(graphDataURL, 'PNG', 1, 2, 0, 0, 'econsumption_graph');
+    doc.save(title + '.pdf'); // Generated PDF 
+
   }
 
 }
