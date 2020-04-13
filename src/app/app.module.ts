@@ -28,6 +28,8 @@ import { ConsumptionCalculatorComponent } from './consumption-calculator/consump
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { ChatbotListComponent } from './chatbot-list/chatbot-list.component';
 import { ChatbotDetailsComponent } from './chatbot-details/chatbot-details.component';
+import { AppParamListComponent } from './app-param-list/app-param-list.component';
+import { AppParamDetailsComponent } from './app-param-details/app-param-details.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { ChatbotDetailsComponent } from './chatbot-details/chatbot-details.compo
     ConsumptionCalculatorComponent,
     ChatbotComponent,
     ChatbotListComponent,
-    ChatbotDetailsComponent
+    ChatbotDetailsComponent,
+    AppParamListComponent,
+    AppParamDetailsComponent
   ],
   imports: [
     BrowserModule,

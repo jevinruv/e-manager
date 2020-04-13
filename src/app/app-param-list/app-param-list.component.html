@@ -1,0 +1,32 @@
+<h3>App Param List</h3>
+
+<p class="float-right">
+  <a routerLink="/app-param/new" class="btn btn-primary">
+    <i class="fa fa-plus"></i> New App Param
+  </a>
+</p>
+
+<p>
+  <input #query (keyup)="filter(query.value)" type="text" placeholder="Search..." class="form-control">
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Key</th>
+      <th>Value</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appParam of filteredAppParamList" [routerLink]="[appParam.id]">
+      <td>{{appParam.id}}</td>
+      <td>{{appParam.key}}</td>
+      <td>{{appParam.value}}</td>
+      <td>
+        <a [routerLink]="[appParam.id]">Manage</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

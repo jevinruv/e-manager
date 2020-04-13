@@ -1,0 +1,36 @@
+<h3>App Param Details</h3>
+
+<form #appParamForm="ngForm" (ngSubmit)="onSubmit()" class="mt-4">
+
+  <div class="form-row">
+
+    <div class="form-group col-md-3">
+      <label for="id">ID</label>
+      <input #id="ngModel" [(ngModel)]="appParam.id" name="id" id="id" type="text" class="form-control"
+        [readonly]="true">
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="key">Key</label>
+    <input #key="ngModel" [(ngModel)]="appParam.key" name="key" id="key" type="text" class="form-control col-md-9"
+      required [readonly]="isReadOnly">
+    <div class="invalid-feedback d-block" *ngIf="key.touched && key.invalid"> Key is Required </div>
+  </div>
+
+  <div class="form-group">
+    <label for="value">Value</label>
+    <input #value="ngModel" [(ngModel)]="appParam.value" name="value" id="value" type="text" class="form-control col-md-9"
+      required [readonly]="isReadOnly">
+    <div class="invalid-feedback d-block" *ngIf="value.touched && value.invalid"> Value is Required </div>
+  </div>
+
+  <div>
+    <a routerLink="/app-param" class="btn btn-secondary"> App Param List</a>
+    <button class="btn btn-success" [disabled]="!appParamForm.valid || isReadOnly">Save</button>
+    <button *ngIf="appParam.id" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
+    <button *ngIf="appParam.id" type="button" (click)="deleteRecord()" class="btn btn-danger">Delete</button>
+  </div>
+
+</form>

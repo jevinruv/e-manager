@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatBotData } from '../models/chatbot-data';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ChatbotDataService } from '../services/chatbot-data.service';
 
@@ -20,6 +20,7 @@ export class ChatbotDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private chatBotDataService: ChatbotDataService,
     private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -47,6 +48,13 @@ export class ChatbotDetailsComponent implements OnInit {
 
   edit() {
     this.isReadOnly = !this.isReadOnly;
+  }
+
+  deleteRecord(){
+
+    this.chatBotDataService.deleteR(this.chatBotData.id).subscribe(data => {
+      this.router.navigate(['/chatbot-data']);
+    });
   }
 
 }

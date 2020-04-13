@@ -20,6 +20,8 @@ import { ConsumptionCalculatorComponent } from './consumption-calculator/consump
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { ChatbotListComponent } from './chatbot-list/chatbot-list.component';
 import { ChatbotDetailsComponent } from './chatbot-details/chatbot-details.component';
+import { AppParamListComponent } from './app-param-list/app-param-list.component';
+import { AppParamDetailsComponent } from './app-param-details/app-param-details.component';
 
 
 const routes: Routes = [
@@ -56,6 +58,10 @@ const routes: Routes = [
       { path: 'customer-category/new', component: CustomerCategoryDetailsComponent, canActivate: [AdminGuard]},    
       { path: 'customer-category/:id', component: CustomerCategoryDetailsComponent, canActivate: [AdminGuard] },    
       { path: 'customer-category', component: CustomerCategoryListComponent, canActivate: [AdminGuard] }, 
+
+      { path: 'app-param/new', component: AppParamDetailsComponent, canActivate: [AdminGuard]},    
+      { path: 'app-param/:id', component: AppParamDetailsComponent, canActivate: [AdminGuard] },    
+      { path: 'app-param', component: AppParamListComponent, canActivate: [AdminGuard] }, 
 
     ]
   },
