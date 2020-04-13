@@ -6,7 +6,7 @@
   .chat {
     background: #2e2e2e;
     border-radius: 10px 10px 0px 0px;
-    height: calc(100vh);
+    height: calc(70vh);
   }
   .chat .avatar {
     height: 24px;
@@ -23,7 +23,8 @@
     background: #8e8e8e;
     padding: 10px;
     overflow: scroll;
-    height: calc(100vh - 100px);
+    /* height: calc(100vh - 100px); */
+    height: calc(70vh);
   }
   .chat-message {
     margin: 5px 0px;
