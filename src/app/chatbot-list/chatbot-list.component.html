@@ -1,0 +1,32 @@
+<h3>Chatbot Data List</h3>
+
+<p class="float-right">
+  <a routerLink="/chatbot-data/new" class="btn btn-primary">
+    <i class="fa fa-plus"></i> New Chatbot Data
+  </a>
+</p>
+
+<p>
+  <input #query (keyup)="filter(query.value)" type="text" placeholder="Search..." class="form-control">
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Code</th>
+      <th>Question</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let chatBotData of filteredChatBotDataList" [routerLink]="[chatBotData.id]">
+      <td>{{chatBotData.id}}</td>
+      <td>{{chatBotData.code}}</td>
+      <td>{{chatBotData.question}}</td>
+      <td>
+        <a [routerLink]="[chatBotData.id]">Manage</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

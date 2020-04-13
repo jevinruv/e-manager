@@ -26,6 +26,8 @@ import { CustomerCategoryListComponent } from './customer-category-list/customer
 import { CustomerCategoryDetailsComponent } from './customer-category-details/customer-category-details.component';
 import { ConsumptionCalculatorComponent } from './consumption-calculator/consumption-calculator.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
+import { ChatbotListComponent } from './chatbot-list/chatbot-list.component';
+import { ChatbotDetailsComponent } from './chatbot-details/chatbot-details.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     CustomerCategoryListComponent,
     CustomerCategoryDetailsComponent,
     ConsumptionCalculatorComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    ChatbotListComponent,
+    ChatbotDetailsComponent
   ],
   imports: [
     BrowserModule,

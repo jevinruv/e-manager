@@ -1,0 +1,42 @@
+<h3>ChatBot Data Details</h3>
+
+<form #chatBotDataForm="ngForm" (ngSubmit)="onSubmit()" class="mt-4">
+
+  <div class="form-row">
+
+    <div class="form-group col-md-3">
+      <label for="id">ID</label>
+      <input #id="ngModel" [(ngModel)]="chatBotData.id" name="id" id="id" type="text" class="form-control"
+        [readonly]="true">
+    </div>
+
+    <div class="form-group col-md-3">
+        <label for="code">Code</label>
+        <input #code="ngModel" [(ngModel)]="chatBotData.code" name="code" id="code" type="text" class="form-control" required
+          [readonly]="isReadOnly">
+          <div class="invalid-feedback d-block" *ngIf="code.touched && code.invalid"> Code is Required </div>
+      </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="question">Question</label>
+    <input #question="ngModel" [(ngModel)]="chatBotData.question" name="question" id="question" type="text" class="form-control col-md-9"
+      required [readonly]="isReadOnly">
+    <div class="invalid-feedback d-block" *ngIf="question.touched && question.invalid"> Question is Required </div>
+  </div>
+
+  <div class="form-group">
+    <label for="answer">Answer</label>
+    <input #answer="ngModel" [(ngModel)]="chatBotData.answer" name="answer" id="answer" type="text" class="form-control col-md-9"
+      required [readonly]="isReadOnly">
+    <div class="invalid-feedback d-block" *ngIf="answer.touched && answer.invalid"> Answer is Required </div>
+  </div>
+
+  <div>
+    <a routerLink="/chatbot-data" class="btn btn-secondary"> Chatbot Data List</a>
+    <button class="btn btn-success" [disabled]="!chatBotDataForm.valid || isReadOnly">Save</button>
+    <button *ngIf="chatBotData.id" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
+  </div>
+
+</form>
