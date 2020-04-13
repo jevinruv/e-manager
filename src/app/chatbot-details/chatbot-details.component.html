@@ -37,6 +37,7 @@
     <a routerLink="/chatbot-data" class="btn btn-secondary"> Chatbot Data List</a>
     <button class="btn btn-success" [disabled]="!chatBotDataForm.valid || isReadOnly">Save</button>
     <button *ngIf="chatBotData.id" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
+    <button *ngIf="chatBotData.id" type="button" (click)="deleteRecord()" class="btn btn-danger">Delete</button>
   </div>
 
 </form>
