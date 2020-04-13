@@ -12,11 +12,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserDetailsComponent implements OnInit {
 
+  //global variables
   user: User = new User();
-
   isReadOnly = true;
   id: string;
 
+  //initialize http services and other required services (dependency injection)
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
@@ -25,34 +26,42 @@ export class UserDetailsComponent implements OnInit {
     private router: Router,
   ) { }
 
+  //method is called initially when the page is loaded
   ngOnInit() {
 
-    this.id = this.route.snapshot.paramMap.get('id');
+    //get id from address bar
+    this.id = this.route.snapshot.paramMap.get('id'); 
 
+    //validate if user can access this page
     if(!this.tokenService.isAdmin() && this.tokenService.getUserID() != this.id){
       this.toastr.warning("Not Accessible");
       return this.router.navigateByUrl('/');;
     }
     
+    //get user object from server if id variable is not null
     if (this.id) {
       this.userService.get(this.id).subscribe(data => {
         console.log(data);
         this.user = data;
       });
     }
+    //if id variable is null, means a new user addition is selected
     else {
       this.isReadOnly = false;
     }
   }
 
+  //method is called when the save button is clicked
   onSubmit() {
 
+    //send the filled user object to server using the http service
     this.userService.addOrUpdate(this.user).subscribe(data => {
       // console.log(data);
       this.isReadOnly = true;
     });
   }
 
+  //toggle page edit state
   edit() {
     this.isReadOnly = !this.isReadOnly;
   }
