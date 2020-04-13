@@ -1,0 +1,28 @@
+<div class="container">
+
+    <div class="chat m-2">
+        <div class="chat-header">
+            <img [attr.src]="contact.avatar" alt="" class="avatar"> Chat Bot
+        </div>
+
+        <div #scrollMe class="chat-messages">
+            <div class="chat-message" *ngFor="let message of messages" [class.user-message]="message.user === user"
+                [class.contact-message]="message.user === contact">
+                <div class="message-author">
+                    <img [attr.src]="message.user.avatar" alt="" class="avatar">
+                </div>
+                <div class="message-text"> {{ message.message }} </div>
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <!-- <img [attr.src]="user.avatar" alt="" class="avatar"> -->
+            <div class="input-group">
+                <input type="text" [(ngModel)]="typedMessage" id="typedMessage" name="" class="form-control">
+                <div class="input-group-append">
+                    <button class="btn btn-success" (click)="sendMessage()" type="button">Send</button>
+                </div>
+            </div>
+        </div>
+
+    </div>

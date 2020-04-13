@@ -1,7 +1,6 @@
 <h3>Electricity Consumption {{ selectedCategory }} </h3>
 
 <div class="mt-4 mb-3">
-
   <a routerLink="/econsumption/" class="btn btn-warning"> All </a>
   <a routerLink="/econsumption/" [queryParams]="{ category: 'planned' }" class="btn btn-success"> Planned </a>
   <a routerLink="/econsumption/" [queryParams]="{ category: 'completed' }" class="btn btn-success"> Completed </a>
@@ -24,13 +23,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let eConsumption of filteredEConsumptionList" [routerLink]="[eConsumption.id]">
-      <td>{{eConsumption.id}}</td> 
-      <td>{{eConsumption.consumptionDate}}</td> 
-      <td>{{eConsumption.consumptionPlanned}}</td> 
-      <td>{{eConsumption.consumptionPlannedCost}}</td> 
-      <td> 
-         <a [routerLink]="[eConsumption.id]">Manage</a> 
-       </td> 
+      <td>{{eConsumption.id}}</td>
+      <td>{{eConsumption.consumptionDate}}</td>
+      <td>{{eConsumption.consumptionPlanned}}</td>
+      <td>{{eConsumption.consumptionPlannedCost}}</td>
+      <td>
+        <a [routerLink]="[eConsumption.id]">Manage</a>
+      </td>
     </tr>
   </tbody>
 </table>
