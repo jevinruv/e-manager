@@ -30,6 +30,7 @@ import { ChatbotListComponent } from './chatbot-list/chatbot-list.component';
 import { ChatbotDetailsComponent } from './chatbot-details/chatbot-details.component';
 import { AppParamListComponent } from './app-param-list/app-param-list.component';
 import { AppParamDetailsComponent } from './app-param-details/app-param-details.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AppParamDetailsComponent } from './app-param-details/app-param-details.
     ChatbotListComponent,
     ChatbotDetailsComponent,
     AppParamListComponent,
-    AppParamDetailsComponent
+    AppParamDetailsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
