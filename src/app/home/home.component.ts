@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { EconsumptionService } from '../services/econsumption.service';
 import { MilestoneService } from '../services/milestone.service';
+import { EConsumption } from '../models/econsumption';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,6 @@ export class HomeComponent implements OnInit {
   mileStoneList = [];
 
   today = new Date();
-  groupedByMonth = [];
   groupedByYear = [];
   last6Months = [];
 
@@ -26,6 +26,8 @@ export class HomeComponent implements OnInit {
   currentYearMileStoneAchieved: number = 0;
   currentYearMileStoneTotal: number = 0;
   currentYearMileStonePercentage: number = 0;
+
+  currentMonthEconsumption: EConsumption = new EConsumption();
 
   constructor(
     private eConsumptionService: EconsumptionService,
@@ -51,7 +53,7 @@ export class HomeComponent implements OnInit {
   }
 
   initMileStoneData() {
-   
+
     let groupedMileStone = _.groupBy(this.mileStoneList, m => {
       return m.mileStoneDate.substring(0, 4);
     });
@@ -59,7 +61,7 @@ export class HomeComponent implements OnInit {
     this.currentYearMileStoneTotal = groupedMileStone[this.today.getFullYear()].length;
 
     groupedMileStone[this.today.getFullYear()].forEach(m => {
-      if(m.status == "ACHIEVED") 
+      if (m.status == "ACHIEVED")
         this.currentYearMileStoneAchieved++;
     });
 
@@ -75,10 +77,6 @@ export class HomeComponent implements OnInit {
       return c.consumptionDate.substring(0, 4);
     });
 
-    this.groupedByMonth = _.groupBy(this.eConsumptionList, c => {
-      return c.consumptionDate.substring(0, 7);
-    });
-
     //last 6 months
     var d;
     let m = []
@@ -92,24 +90,18 @@ export class HomeComponent implements OnInit {
 
 
     // if (this.last6Months.length > 0)
-      this.last6MonthsKwhUsage = this.last6Months.reduce((acc, curr) => acc + curr.consumptionActual, 0);
-      this.last6MonthsKwhCost = this.last6Months.reduce((acc, curr) => acc + curr.consumptionActualCost, 0);
+    this.last6MonthsKwhUsage = this.last6Months.reduce((acc, curr) => acc + curr.consumptionActual, 0);
+    this.last6MonthsKwhCost = this.last6Months.reduce((acc, curr) => acc + curr.consumptionActualCost, 0);
 
     // if (this.groupedByYear.length > 0)
-      this.currentYearKwhUsage = this.groupedByYear[this.today.getFullYear()].reduce((acc, curr) => acc + curr.consumptionActual, 0);
-      this.currentYearKwhCost = this.groupedByYear[this.today.getFullYear()].reduce((acc, curr) => acc + curr.consumptionActualCost, 0);
+    this.currentYearKwhUsage = this.groupedByYear[this.today.getFullYear()].reduce((acc, curr) => acc + curr.consumptionActual, 0);
+    this.currentYearKwhCost = this.groupedByYear[this.today.getFullYear()].reduce((acc, curr) => acc + curr.consumptionActualCost, 0);
 
+    this.currentMonthEconsumption = this.groupedByYear[this.today.getFullYear()].find(c => 
+      c.consumptionDate.replace(/\b0/g, '') == this.today.getFullYear() + "-" + (this.today.getMonth() + 1)
+    );
 
     // console.log(this.dashBoardData);
-  }
-
-
-  private getMonthName(month) {
-
-    var months = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"];
-
-    return months[month];
   }
 
 }
