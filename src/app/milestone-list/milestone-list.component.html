@@ -1,0 +1,33 @@
+<h3>MileStone List</h3>
+
+<p class="float-right">
+    <a routerLink="/milestone/new" class="btn btn-primary">
+        <i class="fa fa-plus"></i> New MileStone
+    </a>
+</p>
+
+<p>
+    <!-- <input #query (keyup)="filter(query.value)" type="text" placeholder="Search..." class="form-control"> -->
+    <select [(ngModel)]="selectedYear" name="selectedYear" id="selectedYear" (ngModelChange)='onYearSelected()' class="form-control col-md-5" required>
+        <option *ngFor="let mileStoneYear of mileStoneYearList"  [value]="mileStoneYear"> {{mileStoneYear}} </option>
+    </select>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Question</th>
+            <th></th>
+        </tr>
+    </thead>
+    <!-- <tbody>
+        <tr *ngFor="let mileStone of filteredMileStoneList" [routerLink]="[mileStone.id]">
+            <td>{{mileStone.id}}</td>
+            <td>
+                <a [routerLink]="[mileStone.id]">Manage</a>
+            </td>
+        </tr>
+    </tbody> -->
+</table>

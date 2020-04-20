@@ -23,6 +23,7 @@ import { ChatbotDetailsComponent } from './chatbot-details/chatbot-details.compo
 import { AppParamListComponent } from './app-param-list/app-param-list.component';
 import { AppParamDetailsComponent } from './app-param-details/app-param-details.component';
 import { HomeComponent } from './home/home.component';
+import { MilestoneListComponent } from './milestone-list/milestone-list.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,8 @@ const routes: Routes = [
       { path: 'app-param/new', component: AppParamDetailsComponent, canActivate: [AdminGuard]},    
       { path: 'app-param/:id', component: AppParamDetailsComponent, canActivate: [AdminGuard] },    
       { path: 'app-param', component: AppParamListComponent, canActivate: [AdminGuard] }, 
+
+      { path: 'mile-stone', component: MilestoneListComponent }, 
 
       { path: '', component: HomeComponent }
 
