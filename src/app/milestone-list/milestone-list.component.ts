@@ -44,7 +44,7 @@ export class MilestoneListComponent implements OnInit {
   }
 
   onYearSelected(){
-    console.log(this.selectedYear);
+    // console.log(this.selectedYear);
 
     if(this.selectedYear == "All"){
       this.filteredMileStoneList = this.mileStoneList;

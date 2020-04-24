@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { TokenService } from '../services/token.service';
 import { ToastrService } from 'ngx-toastr';
+import { CommonValueService } from '../services/common-value.service';
 
 @Component({
   selector: 'app-user-details',
@@ -16,6 +17,7 @@ export class UserDetailsComponent implements OnInit {
   user: User = new User();
   isReadOnly = true;
   id: string;
+  score: string;
 
   //initialize http services and other required services (dependency injection)
   constructor(
@@ -24,6 +26,7 @@ export class UserDetailsComponent implements OnInit {
     private tokenService: TokenService,
     private toastr: ToastrService,
     private router: Router,
+    private commonValueService: CommonValueService
   ) { }
 
   //method is called initially when the page is loaded
@@ -41,8 +44,13 @@ export class UserDetailsComponent implements OnInit {
     //get user object from server if id variable is not null
     if (this.id) {
       this.userService.get(this.id).subscribe(data => {
-        console.log(data);
+        // console.log(data);
         this.user = data;
+      });
+
+      this.commonValueService.getByKey("score").subscribe(data => {
+        this.score = data.value
+        // console.log(this.score);
       });
     }
     //if id variable is null, means a new user addition is selected

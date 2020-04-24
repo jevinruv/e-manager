@@ -10,13 +10,19 @@
         [readonly]="true">
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-3">
       <label for="type">Type</label>
       <select #type="ngModel" [(ngModel)]="user.type" name="type" id="type" class="form-control" required [disabled]="isReadOnly">
       <option value="ADMIN">ADMIN</option>
       <option value="NORMAL">NORMAL</option>
     </select>
     <div class="invalid-feedback d-block" *ngIf="type.touched && type.invalid"> Type is Required </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="score">Score</label>
+      <input [ngModel]="score" name="score" id="score" type="text" class="form-control"
+        [readonly]="true">
     </div>
 
   </div>
