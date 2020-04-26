@@ -3,14 +3,14 @@ import { ForumAnswer } from './forum-answer';
 export class ForumQuestion {
     
     id: number;
-    username: string;
+    email: string;
     question: string;
     createdDate: Date;
     forumAnswers: ForumAnswer[] = [];
 
     constructor() {
         this.id = null;
-        this.username = null;
+        this.email = null;
         this.question = null;
         this.createdDate = null;
     }

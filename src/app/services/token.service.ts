@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class TokenService {
 
-  USERNAME_KEY = 'AuthUsername';
+  // USERNAME_KEY = 'AuthUsername';
+  EMAIL_KEY = 'AuthEmail';
   TYPE_KEY = 'AuthType';
   UserID_KEY = 'AuthUserID';
 
@@ -20,13 +21,22 @@ export class TokenService {
     return sessionStorage.getItem(this.UserID_KEY);
   }
 
-  public saveUsername(username: string) {
-    window.sessionStorage.removeItem(this.USERNAME_KEY);
-    window.sessionStorage.setItem(this.USERNAME_KEY, username);
+  // public saveUsername(username: string) {
+  //   window.sessionStorage.removeItem(this.USERNAME_KEY);
+  //   window.sessionStorage.setItem(this.USERNAME_KEY, username);
+  // }
+
+  // public getUsername(): string {
+  //   return sessionStorage.getItem(this.USERNAME_KEY);
+  // }
+
+  public saveEmaile(email: string) {
+    window.sessionStorage.removeItem(this.EMAIL_KEY);
+    window.sessionStorage.setItem(this.EMAIL_KEY, email);
   }
 
-  public getUsername(): string {
-    return sessionStorage.getItem(this.USERNAME_KEY);
+  public getEmail(): string {
+    return sessionStorage.getItem(this.EMAIL_KEY);
   }
 
   public saveType(type: string) {
@@ -38,7 +48,7 @@ export class TokenService {
     return sessionStorage.getItem(this.TYPE_KEY);
   }
 
-  public isAdmin(){
+  public isAdmin() {
     return this.getType() == ("ADMIN");
   }
 

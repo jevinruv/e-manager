@@ -39,7 +39,7 @@ export class FaqDetailsComponent implements OnInit {
       });
     }
     else {
-      this.forumQuestion.username = this.tokenService.getUsername();
+      this.forumQuestion.email = this.tokenService.getEmail();
       this.isReadOnly = false;
     }
   }
@@ -57,7 +57,7 @@ export class FaqDetailsComponent implements OnInit {
   onSubmitAnswer() {
 
     delete this.forumAnswer.createdDate;
-    this.forumAnswer.username = this.tokenService.getUsername();
+    this.forumAnswer.email = this.tokenService.getEmail();
     this.forumAnswer.forumQuestion.id = this.forumQuestion.id;
 
     // console.log(this.forumAnswer);
@@ -76,7 +76,7 @@ export class FaqDetailsComponent implements OnInit {
   }
 
   isEditEnabled(){
-    return this.tokenService.isAdmin() || this.tokenService.getUsername() == this.forumQuestion.username
+    return this.tokenService.isAdmin() || this.tokenService.getEmail() == this.forumQuestion.email
   }
 
 }

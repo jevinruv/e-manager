@@ -170,18 +170,4 @@ export class EconsumptionsDetailsComponent implements OnInit {
     doc.save(title + '.pdf'); // Generated PDF 
   }
 
-  // sendEmail(report){
-
-  //   let emailObj = {
-  //     report: report,
-  //     consumption: this.eConsumption
-  //   };
-
-  //   console.log(emailObj);
-
-  //   // this.eConsumptionService.sendEmail(emailObj).subscribe(data => {
-
-  //   // });
-  // }
-
 }

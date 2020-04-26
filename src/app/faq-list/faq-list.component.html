@@ -15,7 +15,7 @@
     <tr>
       <th>ID</th>
       <th>Question</th>
-      <th>Username</th>
+      <th>Email</th>
       <th>Created Date</th>
       <th></th>
     </tr>
@@ -24,7 +24,7 @@
     <tr *ngFor="let forumQuestion of filteredForumQuestionList" [routerLink]="[forumQuestion.id]">
       <td>{{forumQuestion.id}}</td>
       <td>{{forumQuestion.question}}</td>
-      <td>{{forumQuestion.username}}</td>
+      <td>{{forumQuestion.email}}</td>
       <td>{{forumQuestion.createdDate}}</td>
       <td>
         <a [routerLink]="[forumQuestion.id]">Manage</a>

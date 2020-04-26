@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    let token = this.tokenService.getUsername();
+    let token = this.tokenService.getEmail();
     if (token) {
       this.router.navigateByUrl('');
     }
@@ -29,14 +29,27 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
 
-    console.log(this.user);
+    // console.log(this.user);
+
+    const isEmpty = Object.values(this.user).every(x => (x === null || x === ''));
+
+    if(isEmpty){
+      this.toastr.error("Enter all data");
+      return;
+    }
 
     this.user.type = "NORMAL";
 
     this.userService.addOrUpdate(this.user).subscribe(
       data => {
-        this.toastr.success("User Registered Successfully");
-        this.router.navigateByUrl('/login');
+
+        if (data) {
+          this.toastr.success("User Registered Successfully");
+          this.router.navigateByUrl('/login');
+        }
+        else {
+          this.toastr.error("User Already Exists");
+        }
       },
       error => {
         console.log(error);

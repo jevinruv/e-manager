@@ -16,9 +16,9 @@ export class AuthGuard implements CanActivate {
 
   canActivate() {
 
-    let username = this.tokenStorage.getUsername();
+    let email = this.tokenStorage.getEmail();
 
-    if (username) {
+    if (email) {
       return true;
     }
 

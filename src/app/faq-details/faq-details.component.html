@@ -18,8 +18,8 @@
     </div>
 
     <div class="form-group">
-        <label for="username">Username</label>
-        <input #username="ngModel" [(ngModel)]="forumQuestion.username" name="username" id="username" type="text"
+        <label for="email">Email</label>
+        <input #email="ngModel" [(ngModel)]="forumQuestion.email" name="email" id="email" type="text"
             class="form-control col-md-9" required [readonly]="true">
     </div>
 
@@ -63,7 +63,7 @@
                                 <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
                             </a>
                             <div class="media-body">
-                                <strong class="text-success">{{forumAnswer.username}}</strong>
+                                <strong class="text-success">{{forumAnswer.email}}</strong>
                                 <span class="text-muted pull-right">
                                     <small class="text-muted">on {{forumAnswer.createdDate}}</small>
                                 </span>

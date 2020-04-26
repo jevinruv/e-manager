@@ -1,12 +1,12 @@
 <div class="background-image"></div>
 <div class="content">
 
-    <div class="container mt-5">
+    <div class="container mt-2">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="h3 mb-3 text-center font-weight-normal">E-Manager Register</h1>
+                        <h1 class="h3 mb-3 text-center">E-Manager Register</h1>
                     </div>
 
                     <div class="card-body">
@@ -20,13 +20,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <!-- <div class="form-group row">
                                 <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
                                 <div class="col-md-6">
                                     <input type="text" #username="ngModel" [(ngModel)]="user.username" id="username"
                                         class="form-control" name="username" required>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
@@ -37,10 +37,60 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="phone" class="col-md-4 col-form-label text-md-right">Phone</label>
+                                <div class="col-md-6">
+                                    <input type="text" #phone="ngModel" [(ngModel)]="user.phone" id="phone"
+                                        class="form-control" name="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
                                     <input type="password" #password="ngModel" [(ngModel)]="user.password" id="password"
                                         class="form-control" name="password" required>
+                                </div>
+                            </div>
+
+                            <h3 class="h3 mb-3 text-center font-weight-normal">Company</h3>
+
+                            <div class="form-group row">
+                                <label for="companyName" class="col-md-4 col-form-label text-md-right">Company Name</label>
+                                <div class="col-md-6">
+                                    <input type="text" #companyName="ngModel" [(ngModel)]="user.companyName" id="companyName"
+                                        class="form-control" name="companyName" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="companyAddress" class="col-md-4 col-form-label text-md-right">Company Address</label>
+                                <div class="col-md-6">
+                                    <input type="text" #companyAddress="ngModel" [(ngModel)]="user.companyAddress" id="companyAddress"
+                                        class="form-control" name="companyAddress" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="companyCity" class="col-md-4 col-form-label text-md-right">Company City</label>
+                                <div class="col-md-6">
+                                    <input type="text" #companyCity="ngModel" [(ngModel)]="user.companyCity" id="companyCity"
+                                        class="form-control" name="companyCity" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="companyProvince" class="col-md-4 col-form-label text-md-right">Company Province</label>
+                                <div class="col-md-6">
+                                    <input type="text" #companyProvince="ngModel" [(ngModel)]="user.companyProvince" id="companyProvince"
+                                        class="form-control" name="companyProvince" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="companyPhone" class="col-md-4 col-form-label text-md-right">Company Phone</label>
+                                <div class="col-md-6">
+                                    <input type="text" #companyPhone="ngModel" [(ngModel)]="user.companyPhone" id="companyPhone"
+                                        class="form-control" name="companyPhone" required>
                                 </div>
                             </div>
 

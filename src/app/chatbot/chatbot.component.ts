@@ -36,7 +36,7 @@ export class ChatbotComponent implements OnInit {
       this.initMessage();
     });
 
-    this.username = this.tokenService.getUsername();
+    this.username = this.tokenService.getEmail();
   }
 
   msg(user, contact, message, timestamp = Date.now()) {

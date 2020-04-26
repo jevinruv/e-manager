@@ -51,10 +51,10 @@
           <a class="nav-link" href="#">Event</a>
         </li> -->
   
-        <li class="nav-item dropdown" *ngIf="username" ngbDropdown>
+        <li class="nav-item dropdown" *ngIf="email" ngbDropdown>
           <a class="nav-link dropdown-toggle" ngbDropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <b>{{username}}</b> - {{type}}
+            <b>{{email}}</b> - {{type}}
           </a>
           <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="navbarDropdown">
             <a class="dropdown-item" (click)="userAccount()" routerLinkActive="active">Account</a>
@@ -64,7 +64,7 @@
         </li>
   
         <li class="nav-item">
-          <a class="nav-link" *ngIf="!username">Login</a>
+          <a class="nav-link" *ngIf="!email">Login</a>
         </li>
   
       </ul>

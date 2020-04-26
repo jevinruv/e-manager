@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   isNavbarCollapsed;
-  username: string;
+  email: string;
   type: string;
 
   constructor(
@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.username = this.tokenService.getUsername();
+    this.email = this.tokenService.getEmail();
     this.type = this.tokenService.getType();
   }
 

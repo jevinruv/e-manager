@@ -19,9 +19,9 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-      let token = this.tokenService.getUsername();
+      let token = this.tokenService.getEmail();
       if (token) {
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('/');
       }
     }
 
@@ -29,14 +29,14 @@ export class LoginComponent implements OnInit {
 
     // console.log(loginForm);
 
-    if(!(loginForm.username || loginForm.password)){
+    if(!(loginForm.email || loginForm.password)){
       this.toastr.error("Fields are empty!");
     }
 
     this.userService.login(loginForm)
       .subscribe(
         data => {
-          // console.log(data);
+          console.log(data);
           this.directUser(data);
         },
         error => {
@@ -50,22 +50,16 @@ export class LoginComponent implements OnInit {
 
     if (data) {
 
-      this.tokenService.saveUsername(data.username);
       this.tokenService.saveType(data.type);
       this.tokenService.saveUserID(data.id);
+      // this.tokenService.saveEmail(data.email);
 
-      // switch (this.tokenService.getType()) {
-      //   case 'ADMIN':
-      //     this.router.navigateByUrl('admin/home');
-      //     break;
-      //   case 'NORMAL':
-      //     this.router.navigateByUrl('');
-      //   default:
-      //     this.router.navigateByUrl('/login');
-      //     break;
-      // }
+      let ee = data.email
+      console.log(ee)
 
-      this.router.navigateByUrl('/');
+      this.tokenService.saveEmaile(ee);
+
+      this.router.navigateByUrl('/home');
     }
     else {
       this.toastr.error("Invalid Credentials!");
