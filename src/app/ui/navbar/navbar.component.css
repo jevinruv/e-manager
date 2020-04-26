@@ -6,3 +6,8 @@
 .navbar {
     margin-bottom: 14px;
 }
+
+.avatar {
+    height: 50px;
+    width: 170px;
+}

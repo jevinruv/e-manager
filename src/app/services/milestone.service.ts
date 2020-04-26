@@ -18,4 +18,12 @@ export class MilestoneService {
   get(id) {
     return this.http.get<MileStone>(this.API_URL + `/${id}`);
   }
+
+  addOrUpdate(obj) {
+    return this.http.post<MileStone>(this.API_URL, obj);
+  }
+
+  deleteR(id) {
+    return this.http.delete(this.API_URL + `/${id}`);
+  }
 }

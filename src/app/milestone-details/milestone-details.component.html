@@ -1,0 +1,53 @@
+<h3>Milestone Details</h3>
+
+<form #milestoneForm="ngForm" (ngSubmit)="onSubmit()" class="mt-4">
+
+  <div class="form-row">
+
+    <div class="form-group col-md-3">
+      <label for="id">ID</label>
+      <input #id="ngModel" [(ngModel)]="milestone.id" name="id" id="id" type="text" class="form-control"
+        [readonly]="true">
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="mileStoneDate">MileStone Date</label>
+      <input #mileStoneDate="ngModel" [ngModel]="milestone.mileStoneDate | date:'yyyy-MM'"
+        (ngModelChange)="milestone.mileStoneDate = $event" name="mileStoneDate" id="mileStoneDate" type="month"
+        class="form-control" required [readonly]="isReadOnly">
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="status">Status</label>
+      <select #status="ngModel" [(ngModel)]="milestone.status" name="status" id="status" class="form-control" required
+        [disabled]="isReadOnly">
+        <option value="PLANNED">PLANNED</option>
+        <option value="ACHIEVED">ACHIEVED</option>
+        <option value="NOTACHIEVED">NOTACHIEVED</option>
+      </select>
+      <div class="invalid-feedback d-block" *ngIf="status.touched && status.invalid"> Type is Required </div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="planned">Planned</label>
+    <input #planned="ngModel" [(ngModel)]="milestone.planned" name="question" id="question" type="text"
+      class="form-control col-md-9" required [readonly]="isReadOnly">
+    <div class="invalid-feedback d-block" *ngIf="planned.touched && planned.invalid"> Question is Required </div>
+  </div>
+
+  <div class="form-group">
+    <label for="actual">Actual</label>
+    <input #actual="ngModel" [(ngModel)]="milestone.actual" name="actual" id="actual" type="text"
+      class="form-control col-md-9" [readonly]="isReadOnly">
+  </div>
+
+  <div>
+    <a routerLink="/mile-stone" class="btn btn-secondary"> MileStone List</a>
+    <button class="btn btn-success" [disabled]="!milestoneForm.valid || isReadOnly">Save</button>
+    <button *ngIf="milestone.id" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
+    <button *ngIf="milestone.id" type="button" (click)="deleteRecord()" class="btn btn-danger">Delete</button>
+  </div>
+
+</form>

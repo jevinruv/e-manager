@@ -10,7 +10,7 @@ body{
 
 .my-form
 {
-    padding-top: 1.5rem;
+    padding-top: 2.5rem;
     padding-bottom: 1.5rem;
 }
 
@@ -22,7 +22,7 @@ body{
 
 .login-form
 {
-    padding-top: 1.5rem;
+    padding-top: 2.5rem;
     padding-bottom: 1.5rem;
 }
 
@@ -31,3 +31,29 @@ body{
     margin-left: 0;
     margin-right: 0;
 }
+
+
+.background-image {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: block;
+    background-image: url('/assets/bg_register.jpg');
+    width: 100%;
+    height: 100%;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+  }
+  
+  .content {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    margin-left: 20px;
+    margin-right: 20px;
+  }

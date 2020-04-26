@@ -30,8 +30,10 @@ import { ChatbotListComponent } from './chatbot-list/chatbot-list.component';
 import { ChatbotDetailsComponent } from './chatbot-details/chatbot-details.component';
 import { AppParamListComponent } from './app-param-list/app-param-list.component';
 import { AppParamDetailsComponent } from './app-param-details/app-param-details.component';
-import { HomeComponent } from './home/home.component';
 import { MilestoneListComponent } from './milestone-list/milestone-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MilestoneDetailsComponent } from './milestone-details/milestone-details.component';
 
 @NgModule({
   declarations: [
@@ -57,8 +59,10 @@ import { MilestoneListComponent } from './milestone-list/milestone-list.componen
     ChatbotDetailsComponent,
     AppParamListComponent,
     AppParamDetailsComponent,
-    HomeComponent,
-    MilestoneListComponent
+    MilestoneListComponent,
+    DashboardComponent,
+    LandingPageComponent,
+    MilestoneDetailsComponent,
   ],
   imports: [
     BrowserModule,

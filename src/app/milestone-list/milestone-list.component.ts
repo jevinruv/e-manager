@@ -38,7 +38,7 @@ export class MilestoneListComponent implements OnInit {
     });
 
     this.mileStoneYearList.push("All");
-    this.mileStoneYearList.push(Object.keys(yearList));
+    this.mileStoneYearList.push(...Object.keys(yearList));
 
     console.log(this.mileStoneYearList);
   }
@@ -52,6 +52,8 @@ export class MilestoneListComponent implements OnInit {
     else{
       this.filteredMileStoneList = this.mileStoneList.filter(m => m.mileStoneDate.substring(0, 4) == this.selectedYear);
     }
+
+    console.log(this.filteredMileStoneList);
 
   }
 

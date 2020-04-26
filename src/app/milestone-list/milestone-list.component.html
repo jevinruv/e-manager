@@ -1,7 +1,7 @@
 <h3>MileStone List</h3>
 
 <p class="float-right">
-    <a routerLink="/milestone/new" class="btn btn-primary">
+    <a routerLink="/mile-stone/new" class="btn btn-primary">
         <i class="fa fa-plus"></i> New MileStone
     </a>
 </p>
@@ -17,17 +17,19 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Code</th>
-            <th>Question</th>
+            <th>Status</th>
+            <th>Date</th>
             <th></th>
         </tr>
     </thead>
-    <!-- <tbody>
+    <tbody>
         <tr *ngFor="let mileStone of filteredMileStoneList" [routerLink]="[mileStone.id]">
             <td>{{mileStone.id}}</td>
+            <td>{{mileStone.status}}</td>
+            <td>{{mileStone.mileStoneDate}}</td>
             <td>
                 <a [routerLink]="[mileStone.id]">Manage</a>
             </td>
         </tr>
-    </tbody> -->
+    </tbody>
 </table>

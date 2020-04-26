@@ -5,6 +5,7 @@ export class MileStone {
     actual: number;
     eConsumptionId: number;
     status: string;
+    mileStoneDate: Date;
 
     constructor() {
         this.id = null;
@@ -12,5 +13,6 @@ export class MileStone {
         this.actual = null;
         this.eConsumptionId = null;
         this.status = null;
+        this.mileStoneDate = null;
     }
 }

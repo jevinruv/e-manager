@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="">E Manager</a>
+    <!-- <a class="navbar-brand" routerLink="/home"> <img src="/assets/logo.jpg" alt="" class="avatar"> </a> -->
     <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse"
       data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
       aria-label="Toggle navigation">
@@ -8,8 +8,8 @@
   
     <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
   
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+       <ul class="navbar-nav mr-auto">
+      <!--  <li class="nav-item">
           <a class="nav-link" routerLink="/prediction/" routerLinkActive="active">Predictions</a>
         </li>
         <li class="nav-item">
@@ -23,7 +23,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/mile-stone/" routerLinkActive="active">Mile Stones</a>
-        </li>
+        </li> -->
   
         <li class="nav-item dropdown" ngbDropdown *ngIf="isAdmin()">
           <a class="nav-link dropdown-toggle" ngbDropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown"

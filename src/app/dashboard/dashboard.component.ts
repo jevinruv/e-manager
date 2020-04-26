@@ -5,11 +5,11 @@ import { MilestoneService } from '../services/milestone.service';
 import { EConsumption } from '../models/econsumption';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class HomeComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   eConsumptionList = [];
   mileStoneList = [];

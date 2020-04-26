@@ -22,8 +22,10 @@ import { ChatbotListComponent } from './chatbot-list/chatbot-list.component';
 import { ChatbotDetailsComponent } from './chatbot-details/chatbot-details.component';
 import { AppParamListComponent } from './app-param-list/app-param-list.component';
 import { AppParamDetailsComponent } from './app-param-details/app-param-details.component';
-import { HomeComponent } from './home/home.component';
 import { MilestoneListComponent } from './milestone-list/milestone-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MilestoneDetailsComponent } from './milestone-details/milestone-details.component';
 
 
 const routes: Routes = [
@@ -65,9 +67,11 @@ const routes: Routes = [
       { path: 'app-param/:id', component: AppParamDetailsComponent, canActivate: [AdminGuard] },    
       { path: 'app-param', component: AppParamListComponent, canActivate: [AdminGuard] }, 
 
+      { path: 'mile-stone/new', component: MilestoneDetailsComponent }, 
+      { path: 'mile-stone/:id', component: MilestoneDetailsComponent }, 
       { path: 'mile-stone', component: MilestoneListComponent }, 
 
-      { path: '', component: HomeComponent }
+      { path: 'home', component: DashboardComponent }
 
     ]
   },
@@ -77,11 +81,12 @@ const routes: Routes = [
     component: LoginLayoutComponent,
     children: [
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent },
+      { path: 'land', component: LandingPageComponent },
     ]
   },
   
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'land' }
 ];
 
 @NgModule({
