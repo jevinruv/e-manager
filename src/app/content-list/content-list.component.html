@@ -1,0 +1,34 @@
+<h3>Content List</h3>
+
+<p class="float-right">
+  <a routerLink="/content/new" class="btn btn-primary">
+    <i class="fa fa-plus"></i> New Content
+  </a>
+</p>
+
+<p>
+  <input #query (keyup)="filter(query.value)" type="text" placeholder="Search..." class="form-control">
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Text</th>
+      <th>Email</th>
+      <th>Created Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let content of filteredContentList" [routerLink]="[content.id]">
+      <td>{{content.id}}</td>
+      <td>{{content.text}}</td>
+      <td>{{content.email}}</td>
+      <td>{{content.createdDate}}</td>
+      <td>
+        <a [routerLink]="[content.id]">Manage</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

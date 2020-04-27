@@ -43,7 +43,12 @@
       class="form-control col-md-9" [readonly]="isReadOnly">
   </div>
 
-  <div>
+
+  <ul class="list-group col-md-9" *ngIf="milestone.status == 'NOTACHIEVED'">
+    <li class="list-group-item" *ngFor="let suggestion of suggestions">{{suggestion}}</li>
+  </ul>
+
+  <div class="mt-3">
     <a routerLink="/mile-stone" class="btn btn-secondary"> MileStone List</a>
     <button class="btn btn-success" [disabled]="!milestoneForm.valid || isReadOnly">Save</button>
     <button *ngIf="milestone.id" type="button" (click)="edit()" class="btn btn-primary">Edit</button>

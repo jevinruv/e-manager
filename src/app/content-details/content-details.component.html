@@ -1,0 +1,48 @@
+<h3>Content Details</h3>
+<form #contentForm="ngForm" (ngSubmit)="onSubmitQuestion()" class="mt-4">
+
+    <div class="form-row">
+
+        <div class="form-group col-md-3">
+            <label for="id">ID</label>
+            <input #id="ngModel" [(ngModel)]="content.id" name="id" id="id" type="text" class="form-control"
+                [readonly]="true">
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="password">Created Date</label>
+            <input #createdDate="ngModel" [(ngModel)]="content.createdDate" name="createdDate" id="createdDate"
+                type="text" class="form-control" [readonly]="true">
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input #email="ngModel" [(ngModel)]="content.email" name="email" id="email" type="text"
+            class="form-control col-md-9" required [readonly]="true">
+    </div>
+
+    <div class="form-group">
+        <label for="text">Text</label>
+        <textarea #text="ngModel" [(ngModel)]="content.text" name="text" id="text" type="text"
+            class="form-control col-md-9" rows="3" required [readonly]="isReadOnly"></textarea>
+        <div class="invalid-feedback d-block" *ngIf="text.touched && text.invalid"> text is Required </div>
+    </div>
+
+    <div class="form-group">
+        <label for="images">Images</label>
+        <input type="file" accept="image/*" name="images" id="images" class="form-control col-md-9" [readonly]="isReadOnly" (change)="changeListener($event)">
+        <ul class="list-group col-md-9">
+            <li class="list-group-item" *ngFor="let contentAttachment of content.contentAttachments"> <img [src]="contentAttachment.image"/> </li>
+        </ul>
+    </div>
+
+
+    <div>
+        <a routerLink="/content" class="btn btn-secondary"> Content List</a>
+        <button class="btn btn-success" [disabled]="!contentForm.valid || isReadOnly">Save</button>
+        <button *ngIf="content.id && isEditEnabled()" type="button" (click)="edit()" class="btn btn-primary">Edit</button>
+    </div>
+
+</form>

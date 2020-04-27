@@ -26,6 +26,8 @@ import { MilestoneListComponent } from './milestone-list/milestone-list.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MilestoneDetailsComponent } from './milestone-details/milestone-details.component';
+import { ContentListComponent } from './content-list/content-list.component';
+import { ContentDetailsComponent } from './content-details/content-details.component';
 
 
 const routes: Routes = [
@@ -42,6 +44,10 @@ const routes: Routes = [
       { path: 'faq/new', component: FaqDetailsComponent },
       { path: 'faq/:id', component: FaqDetailsComponent },
       { path: 'faq', component: FaqListComponent },  
+
+      { path: 'content/new', component: ContentDetailsComponent },
+      { path: 'content/:id', component: ContentDetailsComponent },
+      { path: 'content', component: ContentListComponent }, 
 
       { path: 'econsumption/new', component: EconsumptionsDetailsComponent }, 
       { path: 'econsumption/:id', component: EconsumptionsDetailsComponent }, 

@@ -3,6 +3,7 @@ import { MileStone } from '../models/milestone';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MilestoneService } from '../services/milestone.service';
+import { CommonValueService } from '../services/common-value.service';
 
 @Component({
   selector: 'app-milestone-details',
@@ -15,10 +16,12 @@ export class MilestoneDetailsComponent implements OnInit {
 
   isReadOnly = true;
   id: string;
+  suggestions: string[];
 
   constructor(
     private route: ActivatedRoute,
     private milestoneService: MilestoneService,
+    private commonValueService: CommonValueService,
     private toastr: ToastrService,
     private router: Router
   ) { }
@@ -36,6 +39,10 @@ export class MilestoneDetailsComponent implements OnInit {
     else {
       this.isReadOnly = false;
     }
+
+    this.commonValueService.getByKey("suggestions").subscribe(data => {
+      this.suggestions = data.value.split(";");
+    });
   }
 
   onSubmit() {

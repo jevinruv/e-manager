@@ -34,6 +34,8 @@ import { MilestoneListComponent } from './milestone-list/milestone-list.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MilestoneDetailsComponent } from './milestone-details/milestone-details.component';
+import { ContentListComponent } from './content-list/content-list.component';
+import { ContentDetailsComponent } from './content-details/content-details.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { MilestoneDetailsComponent } from './milestone-details/milestone-details
     DashboardComponent,
     LandingPageComponent,
     MilestoneDetailsComponent,
+    ContentListComponent,
+    ContentDetailsComponent,
   ],
   imports: [
     BrowserModule,
