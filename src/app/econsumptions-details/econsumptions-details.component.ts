@@ -7,6 +7,7 @@ import { CustomerCategory } from '../models/customer-category';
 import { CustomerCategoryService } from '../services/customer-category.service';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { CustomerCategoryPrice } from '../models/customer-category-price';
 
 @Component({
   selector: 'app-econsumptions-details',
@@ -20,7 +21,8 @@ export class EconsumptionsDetailsComponent implements OnInit {
   id: string;
   customerCategoryList: CustomerCategory[] = [];
   eConsumptionList: EConsumption[] = [];
-  selectedCustomerCategory;
+  selectedCustomerCategory: CustomerCategory = new CustomerCategory();
+  customerCategoryPrice: CustomerCategoryPrice = new CustomerCategoryPrice();
 
   graphData: any[];
   view: any[] = [700, 400];
@@ -94,18 +96,24 @@ export class EconsumptionsDetailsComponent implements OnInit {
     this.isReadOnly = !this.isReadOnly;
   }
 
+  onCustomerCategorySelected(e){
+    // console.log(e);
+    this.selectedCustomerCategory = e;
+  }
+
   getCost() {
 
     let calc = {
-      customerCategoryId: this.selectedCustomerCategory,
+      customerCategoryId: this.selectedCustomerCategory.id,
       consumptionValue: this.eConsumption.consumptionActual
     };
 
-    // console.log(calc);
+    console.log(calc);
 
     this.eConsumptionService.calculateConsumption(calc).subscribe(data => {
-      // console.log(data);
-      this.eConsumption.consumptionActualCost = parseInt(data.toString());
+      console.log(data);
+      this.customerCategoryPrice = data["customerCategoryPrice"];
+      this.eConsumption.consumptionActualCost = parseInt(data["total"]);
     });
 
     this.toastr.success("Calculation Submitted");

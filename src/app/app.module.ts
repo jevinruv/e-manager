@@ -36,6 +36,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MilestoneDetailsComponent } from './milestone-details/milestone-details.component';
 import { ContentListComponent } from './content-list/content-list.component';
 import { ContentDetailsComponent } from './content-details/content-details.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { ContentDetailsComponent } from './content-details/content-details.compo
     MilestoneDetailsComponent,
     ContentListComponent,
     ContentDetailsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

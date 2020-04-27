@@ -70,7 +70,6 @@ export class DashboardComponent implements OnInit {
 
   }
 
-
   initConsumptionData() {
 
     this.groupedByYear = _.groupBy(this.eConsumptionList, c => {
@@ -101,7 +100,7 @@ export class DashboardComponent implements OnInit {
       c.consumptionDate.replace(/\b0/g, '') == this.today.getFullYear() + "-" + (this.today.getMonth() + 1)
     );
 
-    // console.log(this.dashBoardData);
+    // console.log(this.currentMonthEconsumption);
   }
 
 }

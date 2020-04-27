@@ -28,6 +28,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MilestoneDetailsComponent } from './milestone-details/milestone-details.component';
 import { ContentListComponent } from './content-list/content-list.component';
 import { ContentDetailsComponent } from './content-details/content-details.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
@@ -77,7 +78,8 @@ const routes: Routes = [
       { path: 'mile-stone/:id', component: MilestoneDetailsComponent }, 
       { path: 'mile-stone', component: MilestoneListComponent }, 
 
-      { path: 'home', component: DashboardComponent }
+      { path: 'dashboard', component: DashboardComponent },
+      { path: '', component: HomeComponent }
 
     ]
   },
@@ -88,11 +90,10 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'land', component: LandingPageComponent },
     ]
   },
   
-  { path: '**', redirectTo: 'land' }
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

@@ -104,16 +104,17 @@
         <h5>Calculator</h5>
         <form #eConsumptionForm="ngForm" (ngSubmit)="onSubmit()" class="mt-4">
 
-            <div class="form-group">
-                <label for="selectedCustomerCategory">Customer Category</label>
-                <select [(ngModel)]="selectedCustomerCategory" name="selectedCustomerCategory"
-                    id="selectedCustomerCategory" class="form-control col-md-5" required>
-                    <option *ngFor="let customerCategory of customerCategoryList" [value]="customerCategory.id">
-                        {{customerCategory.name}} </option>
-                </select>
-            </div>
-
             <div class="form-row">
+
+                <div class="form-group col-md-5">
+                    <label for="selectedCustomerCategory">Customer Category</label>
+                    <select [ngModel]="selectedCustomerCategory" name="selectedCustomerCategory"
+                        (ngModelChange)='onCustomerCategorySelected($event)' id="selectedCustomerCategory"
+                        class="form-control" required>
+                        <option *ngFor="let customerCategory of customerCategoryList" [ngValue]="customerCategory">
+                            {{customerCategory.name}} </option>
+                    </select>
+                </div>
 
                 <div class="form-group col-md-5">
                     <label for="consumptionActual">Consumption</label>
@@ -131,6 +132,10 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div class="form-row">
+
                 <div class="form-group col-md-5">
                     <label for="consumptionActualCost">Consumption Cost</label>
                     <div class="input-group">
@@ -144,34 +149,76 @@
 
             </div>
 
+            <div class="form-row">
+
+                <div class="form-group col-md-5">
+                    <label for="consumptionRangeStart">Range Start</label>
+                    <input #consumptionRangeStart="ngModel" [(ngModel)]="customerCategoryPrice.consumptionRangeStart"
+                        name="consumptionRangeStart" id="consumptionRangeStart" type="number" class="form-control"
+                        required [readonly]="true">
+                </div>
+
+                <div class="form-group col-md-5">
+                    <label for="consumptionRangeStop">Range Stop</label>
+                    <input #consumptionRangeStop="ngModel" [(ngModel)]="customerCategoryPrice.consumptionRangeStop"
+                        name="consumptionRangeStop" id="consumptionRangeStop" type="number" class="form-control"
+                        required [readonly]="true">
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-5">
+                    <label for="fixedCharge">Fixed Charge</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span>
+                        </div>
+                        <input #fixedCharge="ngModel" [(ngModel)]="customerCategoryPrice.fixedCharge" name="fixedCharge"
+                            id="fixedCharge" type="number" class="form-control" required [readonly]="true">
+                    </div>
+                </div>
+
+                <div class="form-group col-md-5">
+                    <label for="energyCharge">Energy Charge</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span>
+                        </div>
+                        <input #energyCharge="ngModel" [(ngModel)]="customerCategoryPrice.energyCharge" name="energyCharge"
+                            id="fixedCharge" type="number" class="form-control" required [readonly]="true">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-5">
+                    <label for="fuelAdjustmentCharge">Fuel Adjustment Charge</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span>
+                        </div>
+                        <input #fuelAdjustmentCharge="ngModel" [(ngModel)]="customerCategoryPrice.fuelAdjustmentCharge" name="fuelAdjustmentCharge"
+                            id="fuelAdjustmentCharge" type="number" class="form-control" required [readonly]="true">
+                    </div>
+                </div>
+
+            </div>
+
         </form>
 
     </div>
 </div>
 
 <div class="row mt-3">
-    <!-- <div class="col-sm-5"> -->
-        <div #graphDetails id="graphDetails" *ngIf="graphData != null">
+    <div #graphDetails id="graphDetails" *ngIf="graphData != null">
 
-            <h5>Graph</h5>
+        <h5>Graph</h5>
 
-            <ngx-charts-line-chart [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
-                [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
-                [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="graphData">
-            </ngx-charts-line-chart>
-        </div>
-    <!-- </div> -->
-
-    <!-- <div class="col-sm-5"> -->
-        <!-- <div #graphDetails id="graphDetails" *ngIf="graphData != null">
-
-            <h5>Graph</h5>
-
-            <ngx-charts-line-chart [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
-                [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
-                [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="graphData">
-            </ngx-charts-line-chart>
-        </div> -->
-    <!-- </div> -->
+        <ngx-charts-line-chart [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="graphData">
+        </ngx-charts-line-chart>
+    </div>
 
 </div>

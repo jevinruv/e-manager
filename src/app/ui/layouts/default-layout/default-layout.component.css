@@ -2,9 +2,13 @@
     overflow-x: hidden;
   }
   
-  .avatar {
+.avatar {
     height: 50px;
     width: 170px;
+}
+
+.list-group-item-action{
+  color: white;
 }
 
   #sidebar-wrapper {
@@ -19,6 +23,7 @@
   #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
+    color: white;
   }
   
   #sidebar-wrapper .list-group {
