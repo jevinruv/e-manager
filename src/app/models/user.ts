@@ -1,7 +1,8 @@
 export class User {
     
     id: number;
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
     // username: string;
     password: string;
@@ -16,7 +17,8 @@ export class User {
 
     constructor() {
         this.id = null;
-        this.name = null;
+        this.firstName = null;
+        this.lastName = null;
         this.email = null;
         // this.username = null;
         this.password = null;

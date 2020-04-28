@@ -23,7 +23,7 @@ export class UserListComponent implements OnInit {
 
   filter(query: string) {
     this.filteredUserList = (query) ?
-      this.userList.filter(user => user.username.includes(query.toLocaleLowerCase())) :  this.userList;
+      this.userList.filter(user => user.email.includes(query.toLocaleLowerCase())) :  this.userList;
   }
 
 

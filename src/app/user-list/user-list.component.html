@@ -12,7 +12,7 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Name</th>
+      <th>First Name</th>
       <th>Email</th>
       <th>Type</th>
       <th></th>
@@ -21,7 +21,7 @@
   <tbody>
     <tr *ngFor="let user of filteredUserList" [routerLink]="[user.id]">
       <td>{{user.id}}</td>
-      <td>{{user.name}}</td>
+      <td>{{user.firstName}}</td>
       <td>{{user.email}}</td>
       <td>{{user.type}}</td>
       <td>
