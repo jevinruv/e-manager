@@ -1,4 +1,4 @@
-body{
+ body{
     margin: 0;
     font-size: .9rem;
     font-weight: 400;
@@ -8,7 +8,7 @@ body{
     background-color: #f5f8fa;
 }
 
-.my-form
+ .my-form
 {
     padding-top: 2.5rem;
     padding-bottom: 1.5rem;
@@ -18,9 +18,9 @@ body{
 {
     margin-left: 0;
     margin-right: 0;
-}
+} 
 
-.login-form
+ .login-form
 {
     padding-top: 2.5rem;
     padding-bottom: 1.5rem;
@@ -30,30 +30,30 @@ body{
 {
     margin-left: 0;
     margin-right: 0;
-}
-
+} 
 
 .background-image {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    display: block;
-    background-image: url('/assets/bg_register.jpg');
-    width: 100%;
-    height: 100%;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
-  }
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  /* display: block; */
+  background-image: url('/assets/bg_register.jpg');
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.content {
+  position: relative;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  margin-left: 20px;
+  margin-right: 20px;
+} 
   
-  .content {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
