@@ -184,8 +184,9 @@
                     <div class="input-group">
                         <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span>
                         </div>
-                        <input #energyCharge="ngModel" [(ngModel)]="customerCategoryPrice.energyCharge" name="energyCharge"
-                            id="fixedCharge" type="number" class="form-control" required [readonly]="true">
+                        <input #energyCharge="ngModel" [(ngModel)]="customerCategoryPrice.energyCharge"
+                            name="energyCharge" id="fixedCharge" type="number" class="form-control" required
+                            [readonly]="true">
                     </div>
                 </div>
 
@@ -198,8 +199,9 @@
                     <div class="input-group">
                         <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span>
                         </div>
-                        <input #fuelAdjustmentCharge="ngModel" [(ngModel)]="customerCategoryPrice.fuelAdjustmentCharge" name="fuelAdjustmentCharge"
-                            id="fuelAdjustmentCharge" type="number" class="form-control" required [readonly]="true">
+                        <input #fuelAdjustmentCharge="ngModel" [(ngModel)]="customerCategoryPrice.fuelAdjustmentCharge"
+                            name="fuelAdjustmentCharge" id="fuelAdjustmentCharge" type="number" class="form-control"
+                            required [readonly]="true">
                     </div>
                 </div>
 
@@ -211,14 +213,25 @@
 </div>
 
 <div class="row mt-3">
-    <div #graphDetails id="graphDetails" *ngIf="graphData != null">
 
-        <h5>Graph</h5>
+    <h5>Graph</h5>
+
+    <div #graphCost id="graphCost" *ngIf="graphCostData != null">
 
         <ngx-charts-line-chart [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
             [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="graphData">
+            [yAxisLabel]="yAxisLabelCost" [timeline]="timeline" [results]="graphCostData">
         </ngx-charts-line-chart>
+
+    </div>
+
+    <div #graphConsumption id="graphConsumption" *ngIf="graphConsumptionData != null">
+
+        <ngx-charts-line-chart [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabelConsumption" [timeline]="timeline" [results]="graphConsumptionData">
+        </ngx-charts-line-chart>
+
     </div>
 
 </div>

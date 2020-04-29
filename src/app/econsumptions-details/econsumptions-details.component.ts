@@ -24,7 +24,8 @@ export class EconsumptionsDetailsComponent implements OnInit {
   selectedCustomerCategory: CustomerCategory = new CustomerCategory();
   customerCategoryPrice: CustomerCategoryPrice = new CustomerCategoryPrice();
 
-  graphData: any[];
+  graphCostData: any[];
+  graphConsumptionData: any[];
   view: any[] = [700, 400];
 
   // options
@@ -36,7 +37,8 @@ export class EconsumptionsDetailsComponent implements OnInit {
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
   xAxisLabel: string = 'Date';
-  yAxisLabel: string = 'Consumption (kWh)';
+  yAxisLabelCost: string = 'Cost (LKR)';
+  yAxisLabelConsumption: string = 'Consumption (kWh)';
   timeline: boolean = true;
 
   constructor(
@@ -96,7 +98,7 @@ export class EconsumptionsDetailsComponent implements OnInit {
     this.isReadOnly = !this.isReadOnly;
   }
 
-  onCustomerCategorySelected(e){
+  onCustomerCategorySelected(e) {
     // console.log(e);
     this.selectedCustomerCategory = e;
   }
@@ -126,12 +128,21 @@ export class EconsumptionsDetailsComponent implements OnInit {
     this.eConsumptionList = this.eConsumptionList.filter(o => o.consumptionDate.toString().split("-")[0] == year);
     // console.log(this.eConsumptionList);
 
-    let actual = this.eConsumptionList.map(o => ({ value: o.consumptionActualCost, name: o.consumptionDate }));
-    let planned = this.eConsumptionList.map(o => ({ value: o.consumptionPlannedCost, name: o.consumptionDate }));
+    let actualCost = this.eConsumptionList.map(o => ({ value: o.consumptionActualCost, name: o.consumptionDate }));
+    let plannedCost = this.eConsumptionList.map(o => ({ value: o.consumptionPlannedCost, name: o.consumptionDate }));
 
-    this.graphData = [
-      { name: "Actual", series: actual },
-      { name: "Planned", series: planned },
+    let actualConsumption = this.eConsumptionList.map(o => ({ value: o.consumptionActual, name: o.consumptionDate }));
+    let plannedConsumption = this.eConsumptionList.map(o => ({ value: o.consumptionPlanned, name: o.consumptionDate }));
+
+
+    this.graphCostData = [
+      { name: "Actual", series: actualCost },
+      { name: "Planned", series: plannedCost },
+    ];
+
+    this.graphConsumptionData = [
+      { name: "Actual", series: actualConsumption },
+      { name: "Planned", series: plannedConsumption },
     ];
 
     // console.log(this.graphData);
@@ -158,9 +169,11 @@ export class EconsumptionsDetailsComponent implements OnInit {
 
     let title = "E-Consumption #" + this.eConsumption.id.toString() + " For " + this.eConsumption.consumptionDate.toString();
     var consumptionDetails = document.getElementById('consumptionDetails');
-    var graphDetails = document.getElementById('graphDetails');
+    var graphCost = document.getElementById('graphCost');
+    var graphConsumption = document.getElementById('graphConsumption');
     let consumptionDataURL;
-    let graphDataURL;
+    let graphCostDataURL;
+    let graphConsumptionDataURL;
 
     var doc = new jsPDF({
       orientation: 'landscape',
@@ -169,12 +182,15 @@ export class EconsumptionsDetailsComponent implements OnInit {
     });
 
     await html2canvas(consumptionDetails).then(canvas => consumptionDataURL = canvas.toDataURL('image/png'));
-    await html2canvas(graphDetails).then(canvas => graphDataURL = canvas.toDataURL('image/png'));
-    
+    await html2canvas(graphCost).then(canvas => graphCostDataURL = canvas.toDataURL('image/png'));
+    await html2canvas(graphConsumption).then(canvas => graphConsumptionDataURL = canvas.toDataURL('image/png'));
+
     doc.text(title, 1, 1);
-    doc.addImage(consumptionDataURL, 'PNG', 1, 2, 0, 0, 'econsumption_details');
+    doc.addImage(consumptionDataURL, 'PNG', 1, 1, 0, 0, 'econsumption_details');
     doc.addPage();
-    doc.addImage(graphDataURL, 'PNG', 1, 2, 0, 0, 'econsumption_graph');
+    doc.addImage(graphConsumptionDataURL, 'PNG', 1, 1, 0, 0, 'econsumption_graph_consumption');
+    doc.addPage();
+    doc.addImage(graphCostDataURL, 'PNG', 1, 1, 0, 0, 'econsumption_graph_cost');
     doc.save(title + '.pdf'); // Generated PDF 
   }
 
