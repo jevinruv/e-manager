@@ -29,6 +29,21 @@ export class DashboardComponent implements OnInit {
 
   currentMonthEconsumption: EConsumption = new EConsumption();
 
+  graphData: any[];
+  view: any[] = [900, 400];
+
+  // options
+  legend: boolean = true;
+  showLabels: boolean = true;
+  animations: boolean = true;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  showYAxisLabel: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Date';
+  yAxisLabel: string = 'Consumption (kWh)';
+  timeline: boolean = true;
+
   constructor(
     private eConsumptionService: EconsumptionService,
     private mileStoneService: MilestoneService
@@ -41,13 +56,14 @@ export class DashboardComponent implements OnInit {
       this.eConsumptionList = data;
 
       this.initConsumptionData();
+      this.initGraph();
     });
 
     this.mileStoneService.getAll().subscribe(data => {
       // console.log(data);
       this.mileStoneList = data;
 
-      this.initMileStoneData();
+      // this.initMileStoneData();
     });
 
   }
@@ -87,7 +103,6 @@ export class DashboardComponent implements OnInit {
 
     this.last6Months = this.eConsumptionList.filter(c => m.includes(c.consumptionDate.replace(/\b0/g, '')));
 
-
     // if (this.last6Months.length > 0)
     this.last6MonthsKwhUsage = this.last6Months.reduce((acc, curr) => acc + curr.consumptionActual, 0);
     this.last6MonthsKwhCost = this.last6Months.reduce((acc, curr) => acc + curr.consumptionActualCost, 0);
@@ -101,6 +116,26 @@ export class DashboardComponent implements OnInit {
     );
 
     // console.log(this.currentMonthEconsumption);
+  }
+
+  initGraph() {
+
+    // let year = this.eConsumption.consumptionDate.toString().split("-")[0];
+
+    // this.eConsumptionList = this.eConsumptionList.filter(o => o.consumptionDate.toString().split("-")[0] == year);
+    // console.log(this.eConsumptionList);
+
+    let actual = this.last6Months.map(o => ({ value: o.consumptionActualCost, name: o.consumptionDate }));
+    let planned = this.last6Months.map(o => ({ value: o.consumptionPlannedCost, name: o.consumptionDate }));
+
+    this.graphData = [
+      { name: "Actual", series: actual },
+      { name: "Planned", series: planned },
+    ];
+
+    // console.log(this.graphData);
+
+    // this.validateConsumptions();
   }
 
 }

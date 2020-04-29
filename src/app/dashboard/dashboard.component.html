@@ -1,22 +1,25 @@
-<div class="row mt-5">
+<div class="row mt-3">
 
     <div class="col-md-4 col-xl-3">
         <div class="card bg-c-pink order-card">
             <div class="card-block">
                 <h6 class="m-b-20">This Month Planned</h6>
-                <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>{{currentMonthEconsumption.consumptionPlanned}} kWh</span></h2>
-                <p class="m-b-0">Cost<span class="f-right">LKR {{currentMonthEconsumption.consumptionPlannedCost}}</span></p>
+                <h2 class="text-right"><i
+                        class="fa fa-credit-card f-left"></i><span>{{currentMonthEconsumption?.consumptionPlanned}}
+                        kWh</span></h2>
+                <p class="m-b-0">Cost<span class="f-right">LKR
+                        {{currentMonthEconsumption?.consumptionPlannedCost}}</span></p>
             </div>
         </div>
     </div>
 
     <div class="col">
-        
+
     </div>
 
 </div>
 
-<div class="row mt-5">
+<div class="row mt-3">
 
     <div class="col-md-4 col-xl-3">
         <div class="card bg-c-blue order-card">
@@ -52,4 +55,12 @@
 
 
 </div>
-<!-- </div> -->
+
+
+<div class="row mt-5">
+    <ngx-charts-line-chart [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="graphData">
+    </ngx-charts-line-chart>
+
+</div>
