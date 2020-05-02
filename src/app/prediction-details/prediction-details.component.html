@@ -48,7 +48,10 @@
 
     </div>
 
-    <div class="col-sm-2" *ngIf="isReadOnly">
+    <div class="col-sm-4" *ngIf="isReadOnly">
+
+      <h5>Prediction Graph</h5>
+      
       <ngx-charts-bar-vertical [view]="view" [results]="predictionData" [gradient]="gradient" [xAxis]="showXAxis"
         [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
         [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
