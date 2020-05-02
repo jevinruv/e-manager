@@ -19,6 +19,7 @@ export class EconsumptionsDetailsComponent implements OnInit {
   eConsumption: EConsumption = new EConsumption();
   isReadOnly = true;
   id: string;
+  maxDemand: number = 0;
   customerCategoryList: CustomerCategory[] = [];
   eConsumptionList: EConsumption[] = [];
   selectedCustomerCategory: CustomerCategory = new CustomerCategory();
@@ -107,7 +108,8 @@ export class EconsumptionsDetailsComponent implements OnInit {
 
     let calc = {
       customerCategoryId: this.selectedCustomerCategory.id,
-      consumptionValue: this.eConsumption.consumptionActual
+      consumptionValue: this.eConsumption.consumptionActual,
+      maxDemandCharge: this.maxDemand,
     };
 
     console.log(calc);
@@ -192,6 +194,10 @@ export class EconsumptionsDetailsComponent implements OnInit {
     doc.addPage();
     doc.addImage(graphCostDataURL, 'PNG', 1, 1, 0, 0, 'econsumption_graph_cost');
     doc.save(title + '.pdf'); // Generated PDF 
+  }
+
+  changeMaxDemand(m){
+    this.maxDemand = m;
   }
 
 }

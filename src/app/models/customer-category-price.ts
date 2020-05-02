@@ -9,6 +9,7 @@ export class CustomerCategoryPrice {
     energyCharge: number;
     fixedCharge: number;
     fuelAdjustmentCharge: number;
+    maxDemandCharge: number;
     reviewedDate: Date;
     forumQuestion: CustomerCategory = new CustomerCategory();
 
@@ -20,6 +21,7 @@ export class CustomerCategoryPrice {
         this.energyCharge = null;
         this.fixedCharge = null;
         this.fuelAdjustmentCharge = null;
+        this.maxDemandCharge = null;
         this.reviewedDate = null;
     }
 }
