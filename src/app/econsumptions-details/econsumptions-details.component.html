@@ -123,7 +123,9 @@
                     <div class="invalid-feedback d-block" *ngIf="maxDemand.touched && maxDemand.invalid"> Max Demand (kVA)
                         Planned is Required </div>
                 </div>
+            </div>
 
+            <div class="form-row">
                 <div class="form-group col-md-5">
                     <label for="consumptionActual">Consumption (kWh) </label>
                     <div class="input-group">
@@ -140,10 +142,6 @@
                     </div>
                 </div>
 
-            </div>
-
-            <div class="form-row">
-
                 <div class="form-group col-md-5">
                     <label for="consumptionActualCost">Consumption Cost</label>
                     <div class="input-group">
@@ -156,6 +154,8 @@
                 </div>
 
             </div>
+
+            <h5 class="mt-3">Constant Values</h5>
 
             <div class="form-row">
 
@@ -213,6 +213,17 @@
                     </div>
                 </div>
 
+                <div class="form-group col-md-5">
+                    <label for="maxDemandCharge">Max Demand Charge</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span>
+                        </div>
+                        <input #maxDemandCharge="ngModel" [(ngModel)]="customerCategoryPrice.maxDemandCharge"
+                            name="maxDemandCharge" id="maxDemandCharge" type="number" class="form-control"
+                            required [readonly]="true">
+                    </div>
+                </div>
+
             </div>
 
         </form>
@@ -220,7 +231,7 @@
     </div>
 </div>
 
-<h5>Graph</h5>
+<h5>Graphs</h5>
 
 <div class="row mt-3">
 

@@ -109,7 +109,7 @@ export class EconsumptionsDetailsComponent implements OnInit {
     let calc = {
       customerCategoryId: this.selectedCustomerCategory.id,
       consumptionValue: this.eConsumption.consumptionActual,
-      maxDemandCharge: this.maxDemand,
+      maxDemandValue: this.maxDemand,
     };
 
     console.log(calc);
