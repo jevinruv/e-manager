@@ -29,7 +29,8 @@ export class DashboardComponent implements OnInit {
 
   currentMonthEconsumption: EConsumption = new EConsumption();
 
-  graphData: any[];
+  graphConsumptionData: any[];
+  graphCostData: any[];
   view: any[] = [900, 400];
 
   // options
@@ -41,7 +42,8 @@ export class DashboardComponent implements OnInit {
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
   xAxisLabel: string = 'Date';
-  yAxisLabel: string = 'Consumption (kWh)';
+  yAxisConsumptionLabel: string = 'Consumption (kWh)';
+  yAxisCostLabel: string = 'Cost (LKR)';
   timeline: boolean = true;
 
   constructor(
@@ -63,7 +65,7 @@ export class DashboardComponent implements OnInit {
       // console.log(data);
       this.mileStoneList = data;
 
-      // this.initMileStoneData();
+      this.initMileStoneData();
     });
 
   }
@@ -120,22 +122,24 @@ export class DashboardComponent implements OnInit {
 
   initGraph() {
 
-    // let year = this.eConsumption.consumptionDate.toString().split("-")[0];
-
-    // this.eConsumptionList = this.eConsumptionList.filter(o => o.consumptionDate.toString().split("-")[0] == year);
-    // console.log(this.eConsumptionList);
-
     let actual = this.last6Months.map(o => ({ value: o.consumptionActualCost, name: o.consumptionDate }));
     let planned = this.last6Months.map(o => ({ value: o.consumptionPlannedCost, name: o.consumptionDate }));
 
-    this.graphData = [
+    this.graphCostData = [
       { name: "Actual", series: actual },
       { name: "Planned", series: planned },
     ];
 
+    let actualConsumption = this.last6Months.map(o => ({ value: o.consumptionActual, name: o.consumptionDate }));
+    let plannedConsumption = this.last6Months.map(o => ({ value: o.consumptionPlanned, name: o.consumptionDate }));
+
+    this.graphConsumptionData = [
+      { name: "Actual", series: actualConsumption },
+      { name: "Planned", series: plannedConsumption },
+    ];
+
     // console.log(this.graphData);
 
-    // this.validateConsumptions();
   }
 
 }

@@ -25,7 +25,7 @@
         <div class="card bg-c-blue order-card">
             <div class="card-block">
                 <h6 class="m-b-20">Last 6 Months</h6>
-                <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>{{last6MonthsKwhUsage}}</span></h2>
+                <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>{{last6MonthsKwhUsage}} kWh</span></h2>
                 <p class="m-b-0">Cost<span class="f-right">LKR {{last6MonthsKwhCost}}</span></p>
             </div>
         </div>
@@ -44,7 +44,7 @@
     <div class="col-md-4 col-xl-3">
         <div class="card bg-c-yellow order-card">
             <div class="card-block">
-                <h6 class="m-b-20">Mile Stone Achieved</h6>
+                <h6 class="m-b-20">Mile Stone Achieved for Current Year</h6>
                 <h2 class="text-right"><i
                         class="fa fa-refresh f-left"></i><span>{{currentYearMileStonePercentage}}%</span></h2>
                 <p class="m-b-0">Mile Stones<span class="f-right"> {{currentYearMileStoneAchieved}} of
@@ -53,14 +53,24 @@
         </div>
     </div>
 
-
 </div>
 
+<h5>Consumption Graph</h5>
 
 <div class="row mt-5">
     <ngx-charts-line-chart [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
         [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
-        [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="graphData">
+        [yAxisLabel]="yAxisConsumptionLabel" [timeline]="timeline" [results]="graphConsumptionData">
+    </ngx-charts-line-chart>
+
+</div>
+
+<h5>Cost Graph</h5>
+
+<div class="row mt-5">
+    <ngx-charts-line-chart [view]="view" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisCostLabel" [timeline]="timeline" [results]="graphCostData">
     </ngx-charts-line-chart>
 
 </div>
