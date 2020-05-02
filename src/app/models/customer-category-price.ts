@@ -11,7 +11,7 @@ export class CustomerCategoryPrice {
     fuelAdjustmentCharge: number;
     maxDemandCharge: number;
     reviewedDate: Date;
-    forumQuestion: CustomerCategory = new CustomerCategory();
+    customerCategory: CustomerCategory = new CustomerCategory();
 
     constructor() {
         this.id = null;

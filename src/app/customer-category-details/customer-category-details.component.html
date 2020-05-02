@@ -47,7 +47,7 @@
 
         <div class="form-row">
 
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 <label for="energyCharge">Energy Charge</label>
                 <div class="input-group">
                     <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
@@ -55,7 +55,7 @@
                         name="energyCharge" id="energyCharge" type="number" class="form-control" [readonly]="isReadOnly">
                 </div>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 <label for="createdDate">Fuel Adjustment Charge</label>
                 <div class="input-group">
                     <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
@@ -64,11 +64,24 @@
                         required [readonly]="isReadOnly">
                 </div>
             </div>
-            <div class="form-group col-md-3">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
                 <label for="fixedCharge">Fixed Charge</label>
                 <div class="input-group">
                     <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
                     <input #fixedCharge="ngModel" [(ngModel)]="customerCategoryPriceOne.fixedCharge" name="fixedCharge"
+                        id="fixedCharge" type="number" class="form-control" [readonly]="isReadOnly">
+                </div>
+
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="maxDemandCharge">Max Demand</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
+                    <input #maxDemandCharge="ngModel" [(ngModel)]="customerCategoryPriceOne.maxDemandCharge" name="maxDemandCharge"
                         id="fixedCharge" type="number" class="form-control" [readonly]="isReadOnly">
                 </div>
 
@@ -101,29 +114,43 @@
 
         <div class="form-row">
 
-            <div class="form-group col-md-3">
-                <label for="energyCharge">Energy Charge</label>
+            <div class="form-group col-md-4">
+                <label for="energyCharge2">Energy Charge</label>
                 <div class="input-group">
                     <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
-                    <input #energyCharge="ngModel" [(ngModel)]="customerCategoryPriceTwo.energyCharge"
-                        name="energyCharge" id="energyCharge" type="number" class="form-control" [readonly]="isReadOnly">
+                    <input #energyCharge2="ngModel" [(ngModel)]="customerCategoryPriceTwo.energyCharge"
+                        name="energyCharge2" id="energyCharge2" type="number" class="form-control" [readonly]="isReadOnly">
                 </div>
             </div>
-            <div class="form-group col-md-3">
-                <label for="createdDate">Fuel Adjustment Charge</label>
+            <div class="form-group col-md-4">
+                <label for="fuelAdjustmentCharge2">Fuel Adjustment Charge</label>
                 <div class="input-group">
                     <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
                     <input #fuelAdjustmentCharge="ngModel" [(ngModel)]="customerCategoryPriceTwo.fuelAdjustmentCharge"
-                        name="fuelAdjustmentCharge" id="fuelAdjustmentCharge" type="number" class="form-control"
+                        name="fuelAdjustmentCharge2" id="fuelAdjustmentCharge2" type="number" class="form-control"
                         required [readonly]="isReadOnly">
                 </div>
             </div>
-            <div class="form-group col-md-3">
-                <label for="fixedCharge">Fixed Charge</label>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="fixedCharge2">Fixed Charge</label>
                 <div class="input-group">
                     <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
-                    <input #fixedCharge="ngModel" [(ngModel)]="customerCategoryPriceTwo.fixedCharge" name="fixedCharge"
-                        id="fixedCharge" type="number" class="form-control" [readonly]="isReadOnly">
+                    <input #fixedCharge2="ngModel" [(ngModel)]="customerCategoryPriceTwo.fixedCharge" name="fixedCharge2"
+                        id="fixedCharge2" type="number" class="form-control" [readonly]="isReadOnly">
+                </div>
+
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="maxDemandCharge2">Max Demand Charge</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"> <span class="input-group-text" id="basic-addon1">LKR</span> </div>
+                    <input #maxDemandCharge2="ngModel" [(ngModel)]="customerCategoryPriceTwo.maxDemandCharge" name="maxDemandCharge2"
+                        id="maxDemandCharge2" type="number" class="form-control" [readonly]="isReadOnly">
                 </div>
 
             </div>
