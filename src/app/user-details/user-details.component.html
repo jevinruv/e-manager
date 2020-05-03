@@ -53,9 +53,17 @@
 
   <div class="form-group">
     <label for="email">Email</label>
-    <input #email="ngModel" [(ngModel)]="user.email" name="email" id="email" class="form-control col-md-9" required
+    <input #email="ngModel" [(ngModel)]="user.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" id="email" class="form-control col-md-9" required
+      [readonly]="isReadOnly">
+    <div class="invalid-feedback d-block" *ngIf="email.touched && email.invalid"> Email is Invalid
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input #phone="ngModel" [(ngModel)]="user.phone" name="phone" id="phone" class="form-control col-md-9" required
       [readonly]="isReadOnly" rows="3">
-    <div class="invalid-feedback d-block" *ngIf="email.touched && email.invalid"> Email is Required
+    <div class="invalid-feedback d-block" *ngIf="phone.touched && phone.invalid"> Phone is Required
     </div>
   </div>
 

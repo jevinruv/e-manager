@@ -29,9 +29,14 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
 
-    // console.log(this.user);
+    console.log(this.user);
 
-    const isEmpty = Object.values(this.user).every(x => (x === null || x === ''));
+    const isEmpty = Object.values(this.user).find(x => {
+      if(x === null || x === '') return true
+    });
+    // const isEmpty = Object.keys(this.user).length === 0;
+
+    console.log(isEmpty);
 
     if(isEmpty){
       this.toastr.error("Enter all data");
