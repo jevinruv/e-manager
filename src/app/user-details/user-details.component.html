@@ -61,7 +61,7 @@
 
   <div class="form-group">
     <label for="phone">Phone</label>
-    <input #phone="ngModel" [(ngModel)]="user.phone" name="phone" id="phone" class="form-control col-md-9" required
+    <input #phone="ngModel" [(ngModel)]="user.phone" name="phone" id="phone" maxlength="10" pattern="^\d{10}$" placeholder="0112223333" class="form-control col-md-9" required
       [readonly]="isReadOnly" rows="3">
     <div class="invalid-feedback d-block" *ngIf="phone.touched && phone.invalid"> Phone is Required
     </div>

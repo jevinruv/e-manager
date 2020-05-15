@@ -40,9 +40,11 @@
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
                                 <div class="col-md-6">
-                                    <input type="email" #email="ngModel" [(ngModel)]="user.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email"
+                                    <input type="email" #email="ngModel" [(ngModel)]="user.email"
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email"
                                         class="form-control" name="email" required>
-                                    <div class="invalid-feedback d-block" *ngIf="email.touched && email.invalid"> Email is Invalid
+                                    <div class="invalid-feedback d-block" *ngIf="email.touched && email.invalid"> Email
+                                        is Invalid
                                     </div>
                                 </div>
                             </div>
@@ -50,10 +52,9 @@
                             <div class="form-group row">
                                 <label for="phone" class="col-md-4 col-form-label text-md-right">Phone</label>
                                 <div class="col-md-6">
-                                    <input type="number" #phone="ngModel" [(ngModel)]="user.phone" id="phone"
-                                        class="form-control" name="phone" required>
+                                    <input #phone="ngModel" [(ngModel)]="user.phone" id="phone" maxlength="10" pattern="^\d{10}$" placeholder="0112223333" class="form-control" name="phone" required>
                                     <div class="invalid-feedback d-block" *ngIf="phone.touched && phone.invalid">
-                                        Phone is Required </div>
+                                        Phone is Invalid </div>
                                 </div>
                             </div>
 
@@ -72,10 +73,11 @@
                                 <label for="password2" class="col-md-4 col-form-label text-md-right">Confirm
                                     Password</label>
                                 <div class="col-md-6">
-                                    <input type="password" ngModel #password2="ngModel" id="password2" class="form-control" name="password2"
-                                        required>
-                                        <div class="invalid-feedback d-block" *ngIf="password2.touched && password2.invalid">
-                                            Confirm Password is Required </div>
+                                    <input type="password" ngModel #password2="ngModel" id="password2"
+                                        class="form-control" name="password2" required>
+                                    <div class="invalid-feedback d-block"
+                                        *ngIf="password2.touched && password2.invalid">
+                                        Confirm Password is Required </div>
                                 </div>
                             </div>
 
@@ -121,7 +123,7 @@
                                 <label for="companyPhone" class="col-md-4 col-form-label text-md-right">Company
                                     Phone</label>
                                 <div class="col-md-6">
-                                    <input type="number" #companyPhone="ngModel" [(ngModel)]="user.companyPhone"
+                                    <input type="number" #companyPhone="ngModel" maxlength="10" pattern="^\d{10}$" placeholder="0112223333" [(ngModel)]="user.companyPhone"
                                         id="companyPhone" class="form-control" name="companyPhone" required>
                                 </div>
                             </div>
